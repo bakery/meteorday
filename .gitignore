@@ -1,0 +1,4 @@
+.DS_Store
+*.scssc
+.sass-cache/*
+settings.json

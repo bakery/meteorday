@@ -1,0 +1,26 @@
+<template name="checkinForm">
+	
+
+	<div class="card form-container">
+		{{#autoForm doc=formDocument collection="Checkins" id="checkinForm" type="insert"}}
+			<fieldset>
+				<legend>Check in</legend>
+				{{> afQuickField name='text' rows=10}}
+				{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
+				{{> afFieldInput name='latitude' type='text' }}
+				{{> afFieldInput name='longitude' type='text' }}
+				{{> afFieldInput name='userId' type='text' }}
+			</fieldset>
+			{{#if pictureUrl}}
+				<img src="{{pictureUrl}}" width="50">
+			{{else}}
+				<button class="btn camera">Add picture</button>
+			{{/if}}
+			<input type="submit" class="btn btn-primary" value="Check in">
+		{{/autoForm}}
+	</div>
+	
+	<div class="card result-container" style="display:none;">
+		results go here
+	</div>
+</template>

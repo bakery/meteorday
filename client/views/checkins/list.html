@@ -1,0 +1,10 @@
+<template name="checkinsList">
+	<ul class="list-group">
+		{{#each checkins}}
+			<li class="list-group-item">
+				<p>{{text}}</p>
+				<img width="50" src="{{photo}}">
+			</li>
+		{{/each}}
+	</ul>
+</template>
