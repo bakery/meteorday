@@ -21,6 +21,7 @@ Router.map(function () {
         this.route('checkinForm', {path: '/'});
     } else {
         this.route('checkins', { path: '/', controller: CheckinsController });
+        this.route('checkinForm', {path: '/checkin'});
     }
 
     this.route('login', { path: '/login', controller: LoginController });
