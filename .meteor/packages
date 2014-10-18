@@ -7,11 +7,11 @@ standard-app-packages
 iron:router
 fourseven:scss
 mizzao:bootstrap-3
-mdg:camera
-mdg:geolocation
 aldeed:autoform
 aldeed:collection2
 accounts-twitter
 accounts-ui
 reactive-var
+mdg:geolocation
+mdg:camera
 
