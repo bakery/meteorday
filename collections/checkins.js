@@ -5,7 +5,7 @@ Checkins.allow({
     }
 });
 
-Checkins.attachSchema(new SimpleSchema({
+CheckinSchema = new SimpleSchema({
     created : {
         type : Date,
         denyUpdate: true,
@@ -14,7 +14,7 @@ Checkins.attachSchema(new SimpleSchema({
                 return new Date();
             }
         }
-    },   
+    },
     userId : {
         type : String
     },
@@ -33,7 +33,9 @@ Checkins.attachSchema(new SimpleSchema({
         type : String,
         optional : true
     }
-}));
+});
+
+Checkins.attachSchema(CheckinSchema);
 
 getAllCheckins = function(){
     return Checkins.find({},{
