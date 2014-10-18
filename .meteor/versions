@@ -38,6 +38,7 @@ less@1.0.10
 livedata@1.0.11
 localstorage@1.0.1
 logging@1.0.4
+matb33:collection-hooks@0.7.6
 mdg:camera@1.1.2
 mdg:geolocation@1.0.2
 meteor-platform@1.1.2
