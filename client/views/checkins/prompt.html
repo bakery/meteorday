@@ -1,0 +1,10 @@
+<template name="prompt">
+	{{#with currentUserProfile}}
+	<img width="40" src="{{imageUrl}}">
+	<strong>{{name}}</strong>
+	<button type="button" class="btn btn-primary btn-lg checkin">
+		<span class="glyphicon glyphicon-map-marker"></span>
+	</button>
+	<hr>
+	{{/with}}
+</template>
