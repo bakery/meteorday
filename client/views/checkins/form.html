@@ -2,13 +2,27 @@
 	
 
 	<div class="card form-container">
-		{{#autoForm doc=formDocument collection="Checkins" id="checkinForm" type="insert"}}
+		{{#if currentLocation}}
+			<strong>got location...</strong>
+		{{else}}
+			<strong>getting location...</strong>
+		{{/if}}
+
+		<!-- collection="Checkins" type="insert" -->
+
+		{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
 			<fieldset>
 				<legend>Check in</legend>
 				{{> afQuickField name='text' rows=10}}
 				{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
-				{{> afFieldInput name='latitude' type='text' }}
-				{{> afFieldInput name='longitude' type='text' }}
+				
+				{{#if currentLocation}}
+					{{#with currentLocation}}
+						{{> afFieldInput value=lat name='latitude' type='text' }}
+						{{> afFieldInput value=lng name='longitude' type='text' }}
+					{{/with}}
+				{{/if}}
+
 				{{> afFieldInput name='userId' type='text' }}
 			</fieldset>
 			{{#if pictureUrl}}

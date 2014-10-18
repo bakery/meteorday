@@ -1,41 +1,30 @@
-Template.checkinForm.formDocument = function(){
-    return {
-        userId : Meteor.userId()
-    };
-};
-
 var pictureUrl = new ReactiveVar(null);
 
-Template.checkinForm.pictureUrl = function(){
-    return pictureUrl.get();
-};
+Template.checkinForm.helpers({
+    currentLocation : function(){
+        return Geolocation.latLng();
+    },
+
+    formDocument : function(){
+        return {
+            userId : Meteor.userId()
+        };
+    },
+
+    pictureUrl : function(){
+        return pictureUrl.get();
+    }
+});
 
 Template.checkinForm.rendered = function(){
     var template = this;
-    var intervalId = setInterval(function(){
-        var latLng = Geolocation.latLng();
-
-        if (! latLng) {
-            
-        } else {
-            template.$('input[name="latitude"]').val(latLng.lat);
-            template.$('input[name="longitude"]').val(latLng.lng);
-            clearInterval(intervalId);
-        }
-
-    },1000);
-
     this.$('.form-container').addClass('animated bounceInDown');
 };
 
 Template.checkinForm.events({
     'click .camera' : function(e, template){
-
         e.stopImmediatePropagation();
 
-        // disable submit button and only enable it after 
-        // the picture is taken / or on error
-        
         template.$('input[type="submit"]')
             .attr('disabled','disabled');
 
@@ -63,10 +52,6 @@ Template.checkinForm.events({
 
 AutoForm.hooks({
     checkinForm: {
-        onSubmit: function(insertDoc, updateDoc, currentDoc) {
-            console.log('on submit', insertDoc);
-        },
-
         onSuccess: function(operation, result, template) {
             $('.form-container').addClass('animated bounceOutUp')
                 .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
@@ -75,7 +60,6 @@ AutoForm.hooks({
                         $('.result-container').css('display','block')
                             .addClass('animated bounceInUp');
                     });
-
         },
 
         onError: function(operation, error, template) {
