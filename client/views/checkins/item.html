@@ -1,0 +1,13 @@
+<template name="item">
+	<li class="list-group-item">
+		{{#with authorProfile}}
+		<strong>{{name}}</strong>
+		<img width="50" src="{{imageUrl}}">
+		{{/with}}
+		<p>{{text}}</p>
+		<img width="50" src="{{photo}}">
+		{{#if locationName}}
+			<span class="glyphicon glyphicon-map-marker">{{locationName}}</span>
+		{{/if}}
+	</li>
+</template>
