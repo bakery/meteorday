@@ -1,11 +1,10 @@
 <template name="checkinsList">
+	
+	{{> prompt}}
+
 	<ul class="list-group">
 		{{#each checkins}}
-			<li class="list-group-item">
-				<p>{{text}}</p>
-				<img width="50" src="{{photo}}">
-				<img src="http://maps.googleapis.com/maps/api/staticmap?center={{latitude}},{{longitude}}&zoom=13&size=300x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C{{latitude}},{{longitude}}">
-			</li>
+			{{> item }}
 		{{/each}}
 	</ul>
 </template>
