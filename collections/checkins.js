@@ -29,6 +29,10 @@ CheckinSchema = new SimpleSchema({
         type : Number,
         decimal: true
     },
+    locationName : {
+        type : String,
+        optional : true
+    },
     photo : {
         type : String,
         optional : true

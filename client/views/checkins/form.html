@@ -1,14 +1,10 @@
 <template name="checkinForm">
-	
-
 	<div class="card form-container">
 		{{#if currentLocation}}
 			<strong>got location...</strong>
 		{{else}}
 			<strong>getting location...</strong>
 		{{/if}}
-
-		<!-- collection="Checkins" type="insert" -->
 
 		{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
 			<fieldset>
@@ -22,8 +18,11 @@
 						{{> afFieldInput value=lng name='longitude' type='text' }}
 					{{/with}}
 				{{/if}}
-
 				{{> afFieldInput name='userId' type='text' }}
+
+				{{#if suggestedLocations}}	
+			  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
+				{{/if}}
 			</fieldset>
 			{{#if pictureUrl}}
 				<img src="{{pictureUrl}}" width="50">

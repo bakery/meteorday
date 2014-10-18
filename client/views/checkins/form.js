@@ -1,4 +1,5 @@
 var pictureUrl = new ReactiveVar(null);
+var suggestedLocations = new ReactiveVar(null);
 
 Template.checkinForm.helpers({
     currentLocation : function(){
@@ -13,12 +14,34 @@ Template.checkinForm.helpers({
 
     pictureUrl : function(){
         return pictureUrl.get();
+    },
+
+    suggestedLocations : function(){
+        var locations = suggestedLocations.get();
+        return locations ? _.map(locations, function(location){
+
+            // adjust data presentation to work nicely with
+            // Autoform's select component
+
+            return {
+                label : location,
+                value : location
+            };
+        }) : null;
     }
 });
 
 Template.checkinForm.rendered = function(){
     var template = this;
     this.$('.form-container').addClass('animated bounceInDown');
+
+    this.autorun(function(){
+        // keep an eye on the location
+        var location = Geolocation.latLng();
+        if(location){
+            Foursquare.explore(location.lat, location.lng, suggestedLocations);
+        }
+    });
 };
 
 Template.checkinForm.events({
