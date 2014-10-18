@@ -76,13 +76,14 @@ Template.checkinForm.events({
 AutoForm.hooks({
     checkinForm: {
         onSuccess: function(operation, result, template) {
-            $('.form-container').addClass('animated bounceOutUp')
-                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-                    function(){
-                        $('.form-container').css('display','none');
-                        $('.result-container').css('display','block')
-                            .addClass('animated bounceInUp');
-                    });
+            Router.go('checkins');
+            // $('.form-container').addClass('animated bounceOutUp')
+            //     .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+            //         function(){
+            //             $('.form-container').css('display','none');
+            //             $('.result-container').css('display','block')
+            //                 .addClass('animated bounceInUp');
+            //         });
         },
 
         onError: function(operation, error, template) {

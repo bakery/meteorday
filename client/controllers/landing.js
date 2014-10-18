@@ -1,5 +1,5 @@
 LandingController = RouteController.extend({
-    template: 'landing',
+    template: 'list',
 
     waitOn: function () {
     },
@@ -7,8 +7,4 @@ LandingController = RouteController.extend({
     data: function () {
         return {};
     }
-
-    // action: function () {
-    //  if we want to override default behavior 
-    // }
 });
