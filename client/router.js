@@ -5,7 +5,7 @@ Router._filters = {
             pause();
         }
     }
-}
+};
 
 var filters = Router._filters;
 
@@ -13,16 +13,10 @@ Router.configure({
   layoutTemplate: 'layout'
 });
 
-Router.onBeforeAction(filters.isLoggedIn,{only:['checkinForm']});
+Router.onBeforeAction(filters.isLoggedIn);
 
 Router.map(function () {
-
-    if(Meteor.isCordova){
-        this.route('checkinForm', {path: '/'});
-    } else {
-        this.route('checkins', { path: '/', controller: CheckinsController });
-        this.route('checkinForm', {path: '/checkin'});
-    }
-
+    this.route('checkins', { path: '/', controller: CheckinsController });
+    this.route('checkinForm', {path: '/checkin'});
     this.route('login', { path: '/login', controller: LoginController });
 });
