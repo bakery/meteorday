@@ -1,10 +1,16 @@
 <template name="checkinsList">
-	
-	{{> prompt}}
 
-	<ul class="list-group">
-		{{#each checkins}}
-			{{> item }}
-		{{/each}}
-	</ul>
+	<div class="bar bar-standard bar-header-secondary">
+		{{> prompt}}
+	</div>
+
+	<div class="content">
+		<div class="card">
+  			<ul class="table-view">
+  				{{#each checkins}}
+					{{> item }}
+				{{/each}}
+		  	</ul>
+		</div>
+    </div>
 </template>
