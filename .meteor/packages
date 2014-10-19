@@ -6,7 +6,6 @@
 standard-app-packages
 iron:router
 fourseven:scss
-mizzao:bootstrap-3
 aldeed:autoform
 aldeed:collection2
 accounts-twitter
@@ -16,4 +15,5 @@ mdg:geolocation
 mdg:camera
 matb33:collection-hooks
 accounts-facebook
+axw:ratchet
 
