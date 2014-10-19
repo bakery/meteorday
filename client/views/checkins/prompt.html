@@ -1,8 +1,12 @@
 <template name="prompt">
 	{{#with currentUserProfile}}
-	<img width="40" src="{{imageUrl}}">
-	<strong>{{name}}</strong>
-	<button class="btn pull-right checkin">
+    <div>
+	   <img width="60" src="{{imageUrl}}">
+    </div>
+    <div class="username">
+	   <strong>{{name}}</strong>
+    </div>
+	<button class="btn btn-block checkin">
     	Checkin
   	</button>
 	{{/with}}
