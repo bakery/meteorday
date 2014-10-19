@@ -1,35 +1,37 @@
 <template name="checkinForm">
 	<div class="content">
-		{{#if currentLocation}}
-			<strong>got location...</strong>
-		{{else}}
-			<strong>getting location...</strong>
-		{{/if}}
-
-		{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
-			
-			{{> afQuickField name='text' rows=10}}
-			{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
-			
+		<div class="content-padded">
 			{{#if currentLocation}}
-				{{#with currentLocation}}
-					{{> afFieldInput value=lat name='latitude' type='text' }}
-					{{> afFieldInput value=lng name='longitude' type='text' }}
-				{{/with}}
-			{{/if}}
-			{{> afFieldInput name='userId' type='text' }}
-
-			{{#if suggestedLocations}}	
-		  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
-			{{/if}}
-			
-			{{#if pictureUrl}}
-				<img src="{{pictureUrl}}" width="50">
+				<strong>got location...</strong>
 			{{else}}
-				<button class="btn camera">Add picture</button>
+				<strong>getting location...</strong>
 			{{/if}}
-			<input type="submit" class="btn-positive btn-block" value="Check in">
-		{{/autoForm}}
+
+			{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
+				
+				{{> afQuickField name='text' rows=10}}
+				{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
+				
+				{{#if currentLocation}}
+					{{#with currentLocation}}
+						{{> afFieldInput value=lat name='latitude' type='text' }}
+						{{> afFieldInput value=lng name='longitude' type='text' }}
+					{{/with}}
+				{{/if}}
+				{{> afFieldInput name='userId' type='text' }}
+
+				{{#if suggestedLocations}}	
+			  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
+				{{/if}}
+				
+				{{#if pictureUrl}}
+					<img src="{{pictureUrl}}" width="50">
+				{{else}}
+					<button class="btn camera">Add picture</button>
+				{{/if}}
+				<input type="submit" class="btn-positive btn-block" value="Check in">
+			{{/autoForm}}
+		</div>
 	</div>
 
 	<!-- <div class="card form-container">
