@@ -3,7 +3,7 @@ Accounts.onCreateUser(function(options, user){
     var extendProfileWith = {};
 
     if(user.services.twitter){
-        extendedProfileWith = {
+        extendProfileWith = {
             imageUrl : user.services.twitter.profile_image_url_https
         };
     }
