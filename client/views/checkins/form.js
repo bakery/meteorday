@@ -1,5 +1,4 @@
-var pictureUrl = new ReactiveVar(null);
-var suggestedLocations = new ReactiveVar(null);
+var pictureUrl, suggestedLocations;
 
 Template.checkinForm.helpers({
     currentLocation : function(){
@@ -30,6 +29,11 @@ Template.checkinForm.helpers({
         }) : null;
     }
 });
+
+Template.checkinForm.created = function(){
+    pictureUrl = new ReactiveVar(null);
+    suggestedLocations = new ReactiveVar(null);
+}
 
 Template.checkinForm.rendered = function(){
     var template = this;
