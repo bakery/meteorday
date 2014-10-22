@@ -51,6 +51,11 @@ CheckinSchema = new SimpleSchema({
     authorProfile : {
         type : Object,
         blackbox : true
+    },
+    device : {
+        type : Object,
+        blackbox : true,
+        optional : true
     }
 });
 

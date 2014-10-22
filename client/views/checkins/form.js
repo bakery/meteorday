@@ -113,6 +113,17 @@ AutoForm.hooks({
                     }
                 }
 
+
+                if(device){
+                    _.extend(doc, {
+                        device : {
+                            model : device.model,
+                            platform : device.platform,
+                            version : device.version
+                        }
+                    });
+                }
+
                 return doc;
             }
         },
