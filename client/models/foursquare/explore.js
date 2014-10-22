@@ -30,17 +30,22 @@ Foursquare = {
                 var locations = [];
 
                 if(data.headerFullLocation){
-                    locations.push(data.headerFullLocation);
+                    locations.push({
+                        name : data.headerFullLocation
+                    });
                 }
 
                 if(data.groups && data.groups.length > 0){
                     _.each(data.groups[0].items, function(i){
-                        locations.push(i.venue.name);
+                        locations.push({
+                            name : i.venue.name,
+                            data : i.venue
+                        });
                     });
                 }
 
                 if(resultContainer){
-                    resultContainer.set(locations);    
+                    resultContainer.set(locations);
                 }
 
                 console.log('suggested locations', locations);

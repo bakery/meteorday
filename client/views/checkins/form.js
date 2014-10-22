@@ -23,8 +23,8 @@ Template.checkinForm.helpers({
             // Autoform's select component
 
             return {
-                label : location,
-                value : location
+                label : location.name,
+                value : location.name
             };
         }) : null;
     },
@@ -60,7 +60,7 @@ Template.checkinForm.rendered = function(){
 Template.checkinForm.events({
 
     'click .checkin-prompt' : function(){
-        Session.set('checkin-form-expanded',true); 
+        Session.set('checkin-form-expanded',true);
     },
 
     'click .camera' : function(e, template){
@@ -93,10 +93,32 @@ Template.checkinForm.events({
 
 AutoForm.hooks({
     checkinForm: {
+
+        before: {
+            insert: function(doc, template) {
+                var locations = suggestedLocations ?
+                    suggestedLocations.get() : [];
+                
+                if(doc.locationName){
+                    var location = _.find(locations, function(l){
+                        return l.name === doc.locationName;
+                    });
+
+                    if(location && location.data){
+                        _.extend(doc, {
+                            locationData : {
+                                foursquare : location.data
+                            }
+                        });
+                    }
+                }
+
+                return doc;
+            }
+        },
+
         onSuccess: function(operation, result, template) {
             Session.set('checkin-form-expanded',false);
-
-            //Router.go('checkins');
         },
 
         onError: function(operation, error, template) {
