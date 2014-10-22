@@ -1,0 +1,34 @@
+.checkin {
+    img {
+        border-radius: 4px;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    } 
+
+    .username {
+        margin-bottom: 10px;
+    }
+
+    textarea, select {
+        padding: 15px;
+    }
+
+    .action-container {
+        height: auto;
+        overflow: hidden;
+    }
+
+    .select-location {
+        float: none;
+        width: auto;
+        overflow: hidden;
+    }
+
+    .camera {
+        float: right;
+        font-size: 24px;
+        padding: 12px;
+        margin-left: 10px;
+    }
+}
