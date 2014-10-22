@@ -1,6 +1,6 @@
 <template name="checkinForm">
-	<div class="content">
-		<div class="content-padded">
+	<div class="content-padded">
+		{{#if isFormExpanded}}
 			{{#if currentLocation}}
 				<strong>got location...</strong>
 			{{else}}
@@ -31,16 +31,18 @@
 				{{/if}}
 				<input type="submit" class="btn-positive btn-block" value="Check in">
 			{{/autoForm}}
-		</div>
+		{{else}}
+			{{#with currentUserProfile}}
+			    <div>
+				   <img width="60" src="{{imageUrl}}">
+			    </div>
+			    <div class="username">
+				   <strong>{{name}}</strong>
+			    </div>
+				<button class="btn btn-block checkin-prompt">
+			    	Checkin
+			  	</button>
+			{{/with}}
+		{{/if}}
 	</div>
-
-	<!-- <div class="card form-container">
-		
-
-		
-	</div>
-	
-	<div class="card result-container" style="display:none;">
-		results go here
-	</div> -->
 </template>

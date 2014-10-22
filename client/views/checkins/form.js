@@ -27,6 +27,15 @@ Template.checkinForm.helpers({
                 value : location
             };
         }) : null;
+    },
+
+    currentUserProfile : function(){
+        var user = Meteor.user();
+        return user ? user.profile : null;
+    },
+
+    isFormExpanded : function(){
+        return Session.get('checkin-form-expanded');
     }
 });
 
@@ -49,6 +58,11 @@ Template.checkinForm.rendered = function(){
 };
 
 Template.checkinForm.events({
+
+    'click .checkin-prompt' : function(){
+        Session.set('checkin-form-expanded',true); 
+    },
+
     'click .camera' : function(e, template){
         e.stopImmediatePropagation();
 
@@ -80,14 +94,9 @@ Template.checkinForm.events({
 AutoForm.hooks({
     checkinForm: {
         onSuccess: function(operation, result, template) {
-            Router.go('checkins');
-            // $('.form-container').addClass('animated bounceOutUp')
-            //     .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-            //         function(){
-            //             $('.form-container').css('display','none');
-            //             $('.result-container').css('display','block')
-            //                 .addClass('animated bounceInUp');
-            //         });
+            Session.set('checkin-form-expanded',false);
+
+            //Router.go('checkins');
         },
 
         onError: function(operation, error, template) {
