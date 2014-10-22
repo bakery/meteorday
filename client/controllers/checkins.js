@@ -9,11 +9,16 @@ CheckinsController = RouteController.extend({
         return {
         	checkins : getAllCheckins()
         };
-    }
+    },
 
-    // action: function () {
-    //  if we want to override default behavior 
-    // }
+    action: function () {
+        if (this.ready()){
+            this.render();
+        }
+        else {
+            this.render('Loading');
+        }
+    }
 });
 
 CheckedInController = RouteController.extend({

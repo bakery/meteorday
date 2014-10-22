@@ -39,6 +39,11 @@ CheckinSchema = new SimpleSchema({
         type : String,
         optional : true
     },
+    locationData : {
+        type : Object,
+        blackbox : true,
+        optional : true
+    },
     photo : {
         type : String,
         optional : true
@@ -46,6 +51,11 @@ CheckinSchema = new SimpleSchema({
     authorProfile : {
         type : Object,
         blackbox : true
+    },
+    device : {
+        type : Object,
+        blackbox : true,
+        optional : true
     }
 });
 
