@@ -5,7 +5,6 @@
 
 standard-app-packages
 iron:router
-fourseven:scss
 aldeed:autoform
 aldeed:collection2
 accounts-twitter
@@ -16,4 +15,5 @@ mdg:camera
 matb33:collection-hooks
 accounts-facebook
 axw:ratchet
+particle4dev:sass
 
