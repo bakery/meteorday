@@ -5,7 +5,6 @@
 
 standard-app-packages
 iron:router
-fourseven:scss
 aldeed:autoform
 aldeed:collection2
 accounts-twitter
@@ -15,5 +14,6 @@ mdg:geolocation
 mdg:camera
 matb33:collection-hooks
 axw:ratchet
+particle4dev:sass
 facebook
 particle4dev:cordova-fb
