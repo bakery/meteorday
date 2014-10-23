@@ -1,4 +1,4 @@
-var pictureUrl, suggestedLocations;
+var pictureUrl, suggestedLocations, updateLocation;
 
 Template.checkinForm.helpers({
     currentLocation : function(){
@@ -42,6 +42,7 @@ Template.checkinForm.helpers({
 Template.checkinForm.created = function(){
     pictureUrl = new ReactiveVar(null);
     suggestedLocations = new ReactiveVar(null);
+    updateLocation = new ReactiveVar(true);
 }
 
 Template.checkinForm.rendered = function(){
@@ -50,14 +51,29 @@ Template.checkinForm.rendered = function(){
 
     this.autorun(function(){
         // keep an eye on the location
-        var location = Geolocation.latLng();
-        if(location){
-            Foursquare.explore(location.lat, location.lng, suggestedLocations);
+        
+        if(updateLocation.get()){
+            var location = Geolocation.latLng();
+            if(location){
+                Foursquare.explore(location.lat, location.lng, suggestedLocations);
+            }
         }
     });
 };
 
 Template.checkinForm.events({
+
+    'click select[name="locationName"]' : function(e, template){
+        // make sure we don't update location once location selector
+        // gets activated
+        updateLocation.set(false);
+    },
+
+    'blur select[name="locationName"]' : function(e, template){
+        // we can restart location updates 
+        // once location selector is deactivated
+        updateLocation.set(true);
+    },
 
     'click .checkin-prompt' : function(){
         Session.set('checkin-form-expanded',true);
