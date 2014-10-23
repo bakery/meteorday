@@ -114,7 +114,7 @@ AutoForm.hooks({
                 }
 
 
-                if(device){
+                if(typeof device !== 'undefined'){
                     _.extend(doc, {
                         device : {
                             model : device.model,
