@@ -129,6 +129,11 @@ AutoForm.hooks({
         },
 
         onSuccess: function(operation, result, template) {
+
+            // clean up reactive variables
+            pictureUrl.set(null);
+            suggestedLocations.set(null);
+
             Session.set('checkin-form-expanded',false);
         },
 
