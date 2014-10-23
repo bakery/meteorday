@@ -1,6 +1,9 @@
+html, body, textarea {
+    font-family: $font-family;
+}
+
 .bar {
     background-color: $primary-color;
-    height: inherit;
 }
 
 .title {

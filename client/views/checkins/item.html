@@ -1,13 +1,17 @@
 <template name="item">
 	<li class="table-view-cell">
-		{{#with authorProfile}}
-		<strong>{{name}}</strong>
-		<img width="50" src="{{imageUrl}}">
-		{{/with}}
-		<p>{{text}}</p>
-		<img width="50" src="{{photo}}">
-		{{#if locationName}}
-			<span>{{locationName}}</span>
-		{{/if}}
+		<div class="checkin-item">
+			{{#with authorProfile}}
+			<img width="50" src="{{imageUrl}}">
+			<strong>{{name}}</strong>
+			{{/with}}
+			<p>{{text}}</p>
+			{{#if photo}}
+				<img width="50" src="{{photo}}">
+			{{/if}}
+			{{#if locationName}}
+				<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}}</span>
+			{{/if}}
+		</div>
 	</li>
 </template>

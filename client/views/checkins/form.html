@@ -1,47 +1,54 @@
 <template name="checkinForm">
-	<div class="content-padded">
+	<div class="content-padded checkin">
 		{{#if isFormExpanded}}
-			{{#if currentLocation}}
-				<strong>got location...</strong>
-			{{else}}
-				<strong>getting location...</strong>
-			{{/if}}
-
-			{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
-				
-				{{> afQuickField name='text' rows=10}}
-				{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
-				
+			<div class="expanded">
 				{{#if currentLocation}}
-					{{#with currentLocation}}
-						{{> afFieldInput value=lat name='latitude' type='text' }}
-						{{> afFieldInput value=lng name='longitude' type='text' }}
-					{{/with}}
-				{{/if}}
-				{{> afFieldInput name='userId' type='text' }}
-
-				{{#if suggestedLocations}}	
-			  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
-				{{/if}}
-				
-				{{#if pictureUrl}}
-					<img src="{{pictureUrl}}" width="50">
+					<!-- strong>got location...</strong -->
 				{{else}}
-					<button class="btn camera">Add picture</button>
+					<!-- strong>getting location...</strong -->
 				{{/if}}
-				<input type="submit" class="btn-positive btn-block" value="Check in">
-			{{/autoForm}}
+				{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
+					
+					{{> afFieldInput name='text' rows=8 placeholder="What's going on?"}}
+					{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
+					
+					{{#if currentLocation}}
+						{{#with currentLocation}}
+							{{> afFieldInput value=lat name='latitude' type="hidden"}}
+							{{> afFieldInput value=lng name='longitude' type="hidden"}}
+						{{/with}}
+					{{/if}}
+					{{> afFieldInput name='userId' type="hidden"}}
+					
+					<div class="action-container">
+						{{#if pictureUrl}}
+							<img src="{{pictureUrl}}" width="50">
+						{{else}}
+							<button class="btn camera"><i class="fa fa-camera-retro"></i></button>
+						{{/if}}
+						<div class="select-location">
+							{{#if suggestedLocations}}	
+						  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
+							{{/if}}
+						</div>
+					</div>
+
+					<input type="submit" class="btn-positive btn-block" value="Check in">
+				{{/autoForm}}
+			</div>
 		{{else}}
 			{{#with currentUserProfile}}
-			    <div>
-				   <img width="60" src="{{imageUrl}}">
-			    </div>
-			    <div class="username">
-				   <strong>{{name}}</strong>
-			    </div>
-				<button class="btn btn-block checkin-prompt">
-			    	Checkin
-			  	</button>
+				<div class="collapsed">
+				    <div>
+					   <img width="60" src="{{imageUrl}}">
+				    </div>
+				    <div class="username">
+					   <strong>{{name}}</strong>
+				    </div>
+					<button class="btn btn-block checkin-prompt">
+				    	Checkin
+				  	</button>
+				</div>
 			{{/with}}
 		{{/if}}
 	</div>
