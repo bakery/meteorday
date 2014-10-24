@@ -66,6 +66,7 @@ reywood:font-awesome-sass@4.2.1
 routepolicy@1.0.2
 service-configuration@1.0.2
 session@1.0.3
+simple:imgur@1.0.1
 spacebars-compiler@1.0.3
 spacebars@1.0.3
 standard-app-packages@1.0.3
