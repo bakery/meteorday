@@ -1,4 +1,4 @@
-LandingController = RouteController.extend({
+LandingController = MobileController.extend({
     template: 'list',
 
     waitOn: function () {

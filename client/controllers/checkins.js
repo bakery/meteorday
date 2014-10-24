@@ -1,13 +1,13 @@
-CheckinsController = RouteController.extend({
+CheckinsController = MobileController.extend({
     template: 'checkinsList',
 
     waitOn: function () {
-    	return Meteor.subscribe('checkins');
+        return Meteor.subscribe('checkins');
     },
 
     data: function () {
         return {
-        	checkins : getAllCheckins()
+            checkins : getAllCheckins()
         };
     },
 

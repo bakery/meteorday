@@ -18,16 +18,11 @@ Router._filters = {
 
 var filters = Router._filters;
 
-Router.configure({
-  layoutTemplate: 'layout'
-});
-
 Router.onBeforeAction(function(){
     // temporary work around since this.next does not seem to work
     filters.isOnline.apply(this, arguments);
     filters.isLoggedIn.apply(this, arguments);
 });
-//Router.onBeforeAction();
 
 Router.map(function () {
     this.route('checkins', { path: '/', controller: CheckinsController });

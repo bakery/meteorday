@@ -1,3 +1,3 @@
-LoginController = RouteController.extend({
+LoginController = MobileController.extend({
     template: 'login'
 });
