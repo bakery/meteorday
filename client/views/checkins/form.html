@@ -38,17 +38,18 @@
 			</div>
 		{{else}}
 			{{#with currentUserProfile}}
-				<div class="collapsed">
-				    <div>
-					   <img width="60" src="{{imageUrl}}">
-				    </div>
-				    <div class="username">
-					   <strong>{{name}}</strong>
-				    </div>
-					<button class="btn btn-block checkin-prompt">
-				    	Checkin
-				  	</button>
-				</div>
+				<ul class="table-view prompt">
+  					<li class="table-view-cell">
+  						<div>
+						   <img src="{{imageUrl}}">
+					    </div>
+					    <div class="username">
+						   <strong>{{name}}</strong>
+					    </div>
+  						<button class="btn checkin-prompt fa fa-map-marker">
+  						</button>
+				  </li>
+				</ul>
 			{{/with}}
 		{{/if}}
 	</div>
