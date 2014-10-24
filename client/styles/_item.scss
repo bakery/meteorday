@@ -1,13 +1,40 @@
-.checkin-item {
-    margin-left: 60px;
+.card {
+    &.items {
+        border: none;
+    }
+}
 
-    img {
-        float: left;
-        margin-left: -60px;
-        border-radius: 4px;
+.checkin-item {
+    width: 100%;
+
+    .profile-image-wrapper {
+        img {
+            //float: left;
+            width: $profile-image-size;
+            height: $profile-image-size;
+            border-radius: 4px;
+        }
+
+        height: 1px;
+    }
+
+    .body-wrapper {
+        padding-left: $profile-image-size*1.2;
+        margin-top: -1px;
+        img {
+            display: block;
+            width: $checkin-image-size;
+        }
+        p {
+            padding: 0.5em 0.5em 0.5em 0;
+        }
     }
 
     .location {
         font-size: 12px;
+    }
+
+    .time {
+        font-size: 12px;   
     }
 }

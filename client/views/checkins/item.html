@@ -1,18 +1,20 @@
 <template name="item">
 	<li class="table-view-cell">
 		<div class="checkin-item">
-			{{#with authorProfile}}
-			<img width="50" src="{{imageUrl}}">
-			<strong>{{name}}</strong>
-			{{/with}}
-			<p>{{text}}</p>
-			{{#if photo}}
-				<img width="50" src="{{photo}}">
-			{{/if}}
-			{{#if locationName}}
-				<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}}</span>
-			{{/if}}
-			{{prettyCheckinTime}}
+			<div class="profile-image-wrapper">
+				<img src="{{authorProfile.imageUrl}}">
+			</div>
+			<div class="body-wrapper">
+				<strong>{{authorProfile.name}}</strong>
+				<p>{{text}}</p>
+				{{#if photo}}
+					<img src="{{photo}}">
+				{{/if}}
+				{{#if locationName}}
+					<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}} - </span>
+				{{/if}}
+				<span class="time">{{prettyCheckinTime}}</span>
+			</div>
 		</div>
 	</li>
 </template>
