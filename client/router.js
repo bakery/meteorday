@@ -33,4 +33,8 @@ Router.map(function () {
     this.route('checkins', { path: '/', controller: CheckinsController });
     this.route('checkinForm', {path: '/checkin'});
     this.route('login', { path: '/login', controller: LoginController });
+    
+    // loading and offline routes are for convenience (style/debug templates)
+    this.route('loading', { path: '/loading'});
+    this.route('offline', { path: '/offline'});
 });
