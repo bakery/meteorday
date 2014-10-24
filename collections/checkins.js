@@ -11,6 +11,35 @@ Checkins.before.insert(function (userId, doc) {
     _.extend(doc, { authorProfile : currentUser.profile });
 });
 
+Checkins.after.insert(function(userId, doc) {
+
+    // do this on the server only
+    if(!Meteor.isServer){
+        return;
+    }
+
+    var checkinId = this._id;
+
+    if(doc.photo && !SimpleSchema.RegEx.Url.exec(doc.photo)){
+        var parameters = {
+            image: doc.photo,
+            apiKey: Meteor.settings.private.imugr.apiKey
+        };
+
+        Imgur.upload(parameters, function (error, data) {
+            if (error) {
+                console.error('error uploading image', error);
+            } else {
+                Checkins.update(checkinId, {
+                    $set : {
+                        photo : data.link
+                    }
+                });
+            }
+        });
+    }
+});
+
 CheckinSchema = new SimpleSchema({
     created : {
         type : Date,
@@ -47,6 +76,11 @@ CheckinSchema = new SimpleSchema({
     photo : {
         type : String,
         optional : true
+    },
+    media : {
+        type : Object,
+        optional : true,
+        blackbox : true
     },
     authorProfile : {
         type : Object,
