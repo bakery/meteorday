@@ -65,6 +65,7 @@ getAllCheckins = function(){
     return Checkins.find({},{
         sort : {
             created : -1
-        }
+        },
+        limit : Meteor.settings.public.checkins.limit
     });
 };
