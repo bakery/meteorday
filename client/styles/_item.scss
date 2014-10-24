@@ -1,6 +1,9 @@
 .card {
     &.items {
         border: none;
+        .table-view-cell {
+            padding: 11px 11px 11px 15px;
+        }
     }
 }
 
