@@ -1,5 +1,5 @@
 Foursquare = {
-    explore : function(lat, lng, resultContainer){
+    explore : function(lat, lng, ready){
 
         var authentication = {
             client_id : Meteor.settings.public.foursquare.clientId,
@@ -44,11 +44,9 @@ Foursquare = {
                     });
                 }
 
-                if(resultContainer){
-                    resultContainer.set(locations);
+                if(ready && _.isFunction(ready)){
+                    ready(locations);
                 }
-
-                console.log('suggested locations', locations);
             }
         );
     }
