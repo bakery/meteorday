@@ -18,7 +18,7 @@ var __loadGoogleMaps = function(){
 Template.map.renderMap = function(){
     var mapOptions = {
         center: new google.maps.LatLng(52.519, 13.398),
-        zoom: 14
+        zoom: 2
     };
     
     map = new google.maps.Map(this.$('.map-canvas')[0],mapOptions);
