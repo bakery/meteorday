@@ -25,11 +25,22 @@ Router.onBeforeAction(function(){
 });
 
 Router.map(function () {
-    this.route('checkins', { path: '/', controller: CheckinsController });
-    this.route('checkinForm', {path: '/checkin'});
+    
+    if(Meteor.isCordova){
+        this.route('checkins', { path: '/', controller: CheckinsController });
+    } else {
+        this.route('dashboard', { path: '/', controller: DashboardController });
+    }
+
+    
     this.route('login', { path: '/login', controller: LoginController });
     
     // loading and offline routes are for convenience (style/debug templates)
     this.route('loading', { path: '/loading'});
     this.route('offline', { path: '/offline'});
+
+    // convenience route for testing checkins on desktop browsers
+    if(!Meteor.isCordova){
+        this.route('checkins', { path: '/checkins', controller: CheckinsController });
+    }
 });
