@@ -1,0 +1,16 @@
+.map-container {
+	float: left;
+	width: 80%;
+	height: 100%;
+
+	.map-canvas {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.list-container {
+	float: right;
+	width: 20%;
+	height: 100%;
+}
