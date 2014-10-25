@@ -43,20 +43,21 @@ Template.checkinForm.created = function(){
     pictureUrl = new ReactiveVar(null);
     suggestedLocations = new ReactiveVar(null);
     updateLocation = new ReactiveVar(true);
-}
+};
 
 Template.checkinForm.rendered = function(){
-    var template = this;
-    this.$('.form-container').addClass('animated bounceInDown');
-
     this.autorun(function(){
         // keep an eye on the location
+        var location = Geolocation.latLng();
         
-        if(updateLocation.get()){
-            var location = Geolocation.latLng();
-            if(location){
-                Foursquare.explore(location.lat, location.lng, suggestedLocations);
-            }
+        // only poll foursquare when we have a location 
+        // and the form is expanded
+        if(location && Session.get('checkin-form-expanded')){
+            Foursquare.explore(location.lat, location.lng, function(locations){
+                if(updateLocation.get()){
+                    suggestedLocations.set(locations);
+                }
+            });
         }
     });
 };
@@ -145,11 +146,8 @@ AutoForm.hooks({
         },
 
         onSuccess: function(operation, result, template) {
-
             // clean up reactive variables
             pictureUrl.set(null);
-            suggestedLocations.set(null);
-
             Session.set('checkin-form-expanded',false);
         },
 
