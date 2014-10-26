@@ -1,5 +1,3 @@
-# Waldo - cross device checkin system
-
 Waldo is a cross device checkin system that allows you to build location centric communities. Waldo is built on [Meteor](http://meteor.com).   
 
 ## What it looks like
