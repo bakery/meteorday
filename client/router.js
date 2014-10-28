@@ -18,11 +18,13 @@ Router._filters = {
 
 var filters = Router._filters;
 
-Router.onBeforeAction(function(){
-    // temporary work around since this.next does not seem to work
-    filters.isOnline.apply(this, arguments);
-    filters.isLoggedIn.apply(this, arguments);
-});
+if(Meteor.isCordova){
+    Router.onBeforeAction(function(){
+        // temporary work around since this.next does not seem to work
+        filters.isOnline.apply(this, arguments);
+        filters.isLoggedIn.apply(this, arguments);
+    });
+}
 
 Router.map(function () {
     
