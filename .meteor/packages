@@ -7,8 +7,6 @@ standard-app-packages
 iron:router
 aldeed:autoform
 aldeed:collection2
-accounts-twitter
-accounts-ui
 reactive-var
 mdg:geolocation
 mdg:camera
