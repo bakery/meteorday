@@ -3,7 +3,10 @@ Router._filters = {
         if (!(Meteor.loggingIn() || Meteor.user())) {
             this.render('login');
             pause();
+            return;
         }
+
+        this.next();
     },
 
     isOnline: function(pause){
@@ -11,19 +14,19 @@ Router._filters = {
             if(navigator.network.connection.type === Connection.NONE){
                 this.render('offline');
                 pause();
+                return;
             }
         }
+
+        this.next();
     }
 };
 
 var filters = Router._filters;
 
 if(Meteor.isCordova){
-    Router.onBeforeAction(function(){
-        // temporary work around since this.next does not seem to work
-        filters.isOnline.apply(this, arguments);
-        filters.isLoggedIn.apply(this, arguments);
-    });
+    Router.onBeforeAction(filters.isOnline);
+    Router.onBeforeAction(filters.isLoggedIn, { only: ['checkins'] });
 }
 
 Router.map(function () {
