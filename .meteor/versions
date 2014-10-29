@@ -43,7 +43,6 @@ logging@1.0.4
 matb33:collection-hooks@0.7.6
 mdg:camera@1.1.2
 mdg:geolocation@1.0.2
-mdg:reload-on-resume@1.0.1
 meteor-platform@1.1.2
 meteor@1.1.2
 minifiers@1.1.1
