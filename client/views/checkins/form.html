@@ -2,18 +2,13 @@
 	<div class="content-padded checkin">
 		{{#if isFormExpanded}}
 			<div class="expanded">
-				{{#if currentLocation}}
-					<!-- strong>got location...</strong -->
-				{{else}}
-					<!-- strong>getting location...</strong -->
-				{{/if}}
 				{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
 					
 					{{> afFieldInput name='text' rows=8 placeholder="What's going on?" autofocus=""}}
 					{{> afFieldInput name='photo' type='hidden' value=pictureUrl}}
 					
-					{{#if currentLocation}}
-						{{#with currentLocation}}
+					{{#if currentGeoLocation}}
+						{{#with currentGeoLocation}}
 							{{> afFieldInput value=lat name='latitude' type="hidden"}}
 							{{> afFieldInput value=lng name='longitude' type="hidden"}}
 						{{/with}}
@@ -27,8 +22,15 @@
 							<button style="margin-top:1px;" class="btn camera"><i class="fa fa-camera-retro"></i></button>
 						{{/if}}
 						<div class="select-location">
-							{{#if suggestedLocations}}	
-						  		{{> afFieldInput name='locationName' type='select' options=suggestedLocations }}
+							{{#if currentLocation}}	
+						  		{{> afFieldInput name='locationName' type='hidden' value=currentLocation.name}}
+								<ul class="table-view">
+									<li class="table-view-cell">
+										<a class="navigate-right location-picker" href="#">
+											{{currentLocation.name}}
+										</a>
+									</li>
+								</ul>
 							{{/if}}
 						</div>
 					</div>
@@ -53,4 +55,6 @@
 			{{/with}}
 		{{/if}}
 	</div>
+
+	{{>locationSelector locations=suggestedLocations}}
 </template>

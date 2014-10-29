@@ -1,7 +1,7 @@
 var pictureUrl, suggestedLocations, updateLocation;
 
 Template.checkinForm.helpers({
-    currentLocation : function(){
+    currentGeoLocation : function(){
         return Geolocation.latLng();
     },
 
@@ -15,17 +15,32 @@ Template.checkinForm.helpers({
         return pictureUrl.get();
     },
 
+    currentLocation : function(){
+        var selectedLocationId = LocationSession.getSelectedLocation();
+        var locations = suggestedLocations.get() || [];
+
+        if(selectedLocationId){
+            return _.find(locations, function(l){
+                return l.data && (l.data.id === selectedLocationId);
+            });
+        } else {
+            return locations.length > 0 ? locations[0] : null;
+        }
+    },
+
     suggestedLocations : function(){
         var locations = suggestedLocations.get();
         return locations ? _.map(locations, function(location){
-
-            // adjust data presentation to work nicely with
-            // Autoform's select component
-
-            return {
-                label : location.name,
-                value : location.name
+            var data =  {
+                name : location.name
             };
+
+            if(location.data){
+                data.id = location.data.id;
+            }
+
+            return data;
+
         }) : null;
     },
 
@@ -46,19 +61,6 @@ Template.checkinForm.created = function(){
 };
 
 Template.checkinForm.rendered = function(){
-
-    // XXX: patch against weird screen jumping behavior
-    // https://github.com/twbs/ratchet/issues/632
-    function isTextInput(node) {
-        return ['INPUT', 'TEXTAREA', 'SELECT'].indexOf(node.nodeName) !== -1;
-    }
-    document.addEventListener('touchstart', function (e) {
-        if (!isTextInput(e.target) && isTextInput(document.activeElement)) {
-            document.activeElement.blur();
-            e.preventDefault();
-        }
-    }, false);
-
     this.autorun(function(){
         // keep an eye on the location
         var location = Geolocation.latLng();
@@ -67,9 +69,7 @@ Template.checkinForm.rendered = function(){
         // and the form is expanded
         if(location && Session.get('checkin-form-expanded')){
             Foursquare.explore(location.lat, location.lng, function(locations){
-                if(updateLocation.get()){
-                    suggestedLocations.set(locations);
-                }
+                suggestedLocations.set(locations);
             });
         }
     });
@@ -77,20 +77,20 @@ Template.checkinForm.rendered = function(){
 
 Template.checkinForm.events({
 
-    'click select[name="locationName"]' : function(e, template){
-        // make sure we don't update location once location selector
-        // gets activated
-        updateLocation.set(false);
-    },
-
-    'blur select[name="locationName"]' : function(e, template){
-        // we can restart location updates 
-        // once location selector is deactivated
-        updateLocation.set(true);
-    },
-
     'click .checkin-prompt' : function(){
         Session.set('checkin-form-expanded',true);
+    },
+
+    'click .location-picker' : function(e, template){
+
+        // XXX long lists interfere with the modal overlay
+        // hide the list before showing the modal
+        // and let the modal know what to restore via data-target
+
+        var listSelector = '.items'; 
+        $('.location-selector-modal').addClass('active')
+            .data('target',listSelector);
+        $(listSelector).hide();
     },
 
     'click .camera' : function(e, template){
@@ -162,6 +162,7 @@ AutoForm.hooks({
             // clean up reactive variables
             pictureUrl.set(null);
             Session.set('checkin-form-expanded',false);
+            LocationSession.reset();
         },
 
         onError: function(operation, error, template) {
