@@ -1,0 +1,28 @@
+<template name="locationSelector">
+	<div class="modal location-selector-modal">
+		<header class="bar bar-nav">
+			<a class="icon icon-close pull-right" href="#myModalexample"></a>
+			<h1 class="title">Modal</h1>
+		</header>
+
+		<div class="content">
+			<p class="content-padded">
+				{{#if locations}}
+					<div class="card">
+						<ul class="table-view">
+						{{#each locations}}
+							<!-- only display venues 
+								(not general location without id) -->
+							{{#if id}}
+							<li class="table-view-cell location" data-id="{{id}}">{{name}} {{#if isSelected}}*{{/if}}</li>
+							{{/if}}
+						{{/each}}
+						</ul>
+					</div>
+				{{else}}
+				no locations
+				{{/if}}
+			</p>
+		</div>
+	</div>
+</template>
