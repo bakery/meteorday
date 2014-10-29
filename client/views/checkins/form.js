@@ -46,6 +46,19 @@ Template.checkinForm.created = function(){
 };
 
 Template.checkinForm.rendered = function(){
+
+    // XXX: patch against weird screen jumping behavior
+    // https://github.com/twbs/ratchet/issues/632
+    function isTextInput(node) {
+        return ['INPUT', 'TEXTAREA', 'SELECT'].indexOf(node.nodeName) !== -1;
+    }
+    document.addEventListener('touchstart', function (e) {
+        if (!isTextInput(e.target) && isTextInput(document.activeElement)) {
+            document.activeElement.blur();
+            e.preventDefault();
+        }
+    }, false);
+
     this.autorun(function(){
         // keep an eye on the location
         var location = Geolocation.latLng();
