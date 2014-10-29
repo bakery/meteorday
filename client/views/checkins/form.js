@@ -87,7 +87,7 @@ Template.checkinForm.events({
         // hide the list before showing the modal
         // and let the modal know what to restore via data-target
 
-        var listSelector = '.items'; 
+        var listSelector = '.items';
         $('.location-selector-modal').addClass('active')
             .data('target',listSelector);
         $(listSelector).hide();
@@ -107,11 +107,8 @@ Template.checkinForm.events({
             function(error,data){
                 if(!error){
                     pictureUrl.set(data);
-                } else {
-                    console.error('faield to take a picture. faking.', error);
-                    pictureUrl.set('http://s2.favim.com/orig/35/cute-dog-puppy-Favim.com-281670.jpg');
                 }
-
+                
                 template.$('input[type="submit"]')
                     .removeAttr('disabled');
             }
