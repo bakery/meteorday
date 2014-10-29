@@ -77,6 +77,15 @@ Template.checkinForm.rendered = function(){
 
 Template.checkinForm.events({
 
+    'change, keyup textarea[name="text"]' : function(e, template){
+        var currentValue = $(e.currentTarget).val();
+        if(currentValue && currentValue.length > 3){
+            template.$('input[type="submit"]').removeAttr('disabled');
+        } else {
+            template.$('input[type="submit"]').attr('disabled','disabled');
+        }
+    },
+
     'click .checkin-prompt' : function(){
         Session.set('checkin-form-expanded',true);
     },
@@ -108,7 +117,7 @@ Template.checkinForm.events({
                 if(!error){
                     pictureUrl.set(data);
                 }
-                
+
                 template.$('input[type="submit"]')
                     .removeAttr('disabled');
             }
