@@ -14,7 +14,7 @@ Foursquare = {
             {
                 params : _.extend({}, authentication, {
                     ll : [lat,lng].join(','),
-                    limit : 5, sortByDistance : 1
+                    limit : 10, sortByDistance : 1
                 })
             },
             function(error, result){
