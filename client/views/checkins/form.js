@@ -130,6 +130,10 @@ Template.checkinForm.events({
 AutoForm.hooks({
     checkinForm: {
 
+        beginSubmit: function(){
+            Session.set('checkin-form-expanded',false);
+        },
+
         before: {
             insert: function(doc, template) {
                 var locations = suggestedLocations ?
@@ -167,7 +171,6 @@ AutoForm.hooks({
         onSuccess: function(operation, result, template) {
             // clean up reactive variables
             pictureUrl.set(null);
-            Session.set('checkin-form-expanded',false);
             LocationSession.reset();
         },
 
