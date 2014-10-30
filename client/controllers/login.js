@@ -1,3 +1,4 @@
 LoginController = MobileController.extend({
-    template: 'login'
+    template: 'login',
+    layoutTemplate: 'mobile_splash'
 });
