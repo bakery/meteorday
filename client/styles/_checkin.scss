@@ -31,4 +31,32 @@
         padding: 12px;
         margin-left: 10px;
     }
+
+    .location-button {
+        margin-top: 0;
+        margin-bottom: 15px;
+        position: relative;
+        padding: 13px 65px 14px 15px;
+        overflow: hidden;
+        border-radius: 3px;
+        vertical-align: top;
+        border: solid 1px #ccc;
+    }
+
+    .location-button:after {
+        right: 15px;
+        content: '\f041';
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        font-family: FontAwesome;
+        font-size: inherit;
+        line-height: 1;
+        color: #bbb;
+        text-decoration: none;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-font-smoothing: antialiased;
+    }
 }

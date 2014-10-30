@@ -19,18 +19,16 @@
 						{{#if pictureUrl}}
 							<img src="{{pictureUrl}}" width="50">
 						{{else}}
-							<button style="margin-top:1px;" class="btn camera"><i class="fa fa-camera-retro"></i></button>
+							<button class="btn camera"><i class="fa fa-camera-retro"></i></button>
 						{{/if}}
 						<div class="select-location">
 							{{#if currentLocation}}	
 						  		{{> afFieldInput name='locationName' type='hidden' value=currentLocation.name}}
-								<ul class="table-view">
-									<li class="table-view-cell">
-										<a class="navigate-right location-picker" href="#">
-											{{currentLocation.name}}
-										</a>
-									</li>
-								</ul>
+								<div class="location-button">
+									<a class="location-button-icon location-picker" href="#">
+										{{currentLocation.name}}
+									</a>
+								</div>
 							{{/if}}
 						</div>
 					</div>

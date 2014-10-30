@@ -4,8 +4,19 @@ html, body, textarea {
 
 .bar {
     background-color: $primary-color;
+    border-bottom: 0;
 }
 
 .title {
     color: $primary-text-color;
+}
+
+// ratchet overrides
+
+.card {
+    margin: 10px 0;
+}
+
+.table-view .table-view-cell {
+    background-position: 0 100%;
 }
