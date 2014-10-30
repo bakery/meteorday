@@ -1,3 +1,8 @@
+Router.plugin('loading', {
+    loadingTemplate: 'loading'
+});
+
+
 Router._filters = {
     isLoggedIn: function(pause) {
         if (!(Meteor.loggingIn() || Meteor.user())) {

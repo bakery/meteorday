@@ -1,7 +1,7 @@
 CheckinsController = MobileController.extend({
     template: 'checkinsList',
 
-    waitOn: function () {
+    subscriptions: function () {
         return Meteor.subscribe('checkins');
     },
 
@@ -9,16 +9,16 @@ CheckinsController = MobileController.extend({
         return {
             checkins : getAllCheckins()
         };
-    },
-
-    action: function () {
-        if (this.ready()){
-            this.render();
-        }
-        else {
-            this.render('Loading');
-        }
     }
+
+    // action: function () {
+    //     if (this.ready()){
+    //         this.render();
+    //     }
+    //     else {
+    //         this.render('loading');
+    //     }
+    // }
 });
 
 CheckedInController = RouteController.extend({
