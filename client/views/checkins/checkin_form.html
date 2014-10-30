@@ -24,8 +24,8 @@
 						<div class="select-location">
 							{{#if currentLocation}}	
 						  		{{> afFieldInput name='locationName' type='hidden' value=currentLocation.name}}
-								<div class="location-button">
-									<a class="location-button-icon location-picker" href="#">
+								<div class="location-button location-picker">
+									<a class="location-selected-name" href="#">
 										{{currentLocation.name}}
 									</a>
 								</div>
