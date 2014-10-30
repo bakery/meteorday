@@ -1,7 +1,7 @@
 <template name="checkinForm">
-	<div class="content-padded checkin">
+	<div class="checkin">
 		{{#if isFormExpanded}}
-			<div class="expanded">
+			<div class="content-padded expanded">
 				{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
 					
 					{{> afFieldInput name='text' rows=8 placeholder="What's going on?" autofocus=""}}
