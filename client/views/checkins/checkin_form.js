@@ -32,7 +32,8 @@ Template.checkinForm.helpers({
         var locations = suggestedLocations.get();
         return locations ? _.map(locations, function(location){
             var data =  {
-                name : location.name
+                name : location.name,
+                icon : location.icon
             };
 
             if(location.data){

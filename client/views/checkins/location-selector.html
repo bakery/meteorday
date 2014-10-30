@@ -14,7 +14,7 @@
 							<!-- only display venues 
 								(not general location without id) -->
 							{{#if id}}
-							<li class="table-view-cell location" data-id="{{id}}">{{name}} {{#if isSelected}}*{{/if}}</li>
+							<li class="table-view-cell location" data-id="{{id}}">{{#if icon}}<img src="{{icon}}">{{/if}} {{name}} {{#if isSelected}}*{{/if}}</li>
 							{{/if}}
 						{{/each}}
 						</ul>
