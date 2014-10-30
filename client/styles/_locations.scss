@@ -1,0 +1,17 @@
+.location-selector-modal {
+
+    .location:active {
+        background-color: #eee;
+    }
+
+    .location-icon, 
+    .location-name {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .location-icon {
+        width: 32px;
+        margin-right: 10px;
+    }
+}

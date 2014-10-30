@@ -32,11 +32,14 @@
         margin-left: 10px;
     }
 
+    .camera,.location-button {
+        margin-bottom: 15px;
+    }
+
     .location-button {
         margin-top: 0;
-        margin-bottom: 15px;
         position: relative;
-        padding: 13px 65px 14px 15px;
+        padding: 14px 50px 14px 35px;
         overflow: hidden;
         border-radius: 3px;
         vertical-align: top;
@@ -45,9 +48,10 @@
         white-space: nowrap;
     }
 
+    .location-button:before,
     .location-button:after {
         right: 15px;
-        content: '\f041';
+        content: '\f078';
         position: absolute;
         top: 50%;
         display: inline-block;
@@ -57,8 +61,22 @@
         color: #bbb;
         text-decoration: none;
         -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         -webkit-font-smoothing: antialiased;
+    }
+
+    .location-button:before {
+        left: 15px;
+        content: '\f041';
+        color: #428bca;
+    }
+
+    .location-button:after {
+        right: 15px;
+        content: '\f078';
+    }
+
+    .location-selected-name {
+        // border-bottom: 1px dotted;
     }
 }
