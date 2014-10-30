@@ -1,6 +1,11 @@
-var pictureUrl, suggestedLocations, updateLocation;
+var pictureUrl, suggestedLocations, updateLocation, checkinPending;
 
 Template.checkinForm.helpers({
+    
+    isCheckinPending : function(){
+        return checkinPending.get();
+    }, 
+
     currentGeoLocation : function(){
         return Geolocation.latLng();
     },
@@ -59,6 +64,7 @@ Template.checkinForm.created = function(){
     pictureUrl = new ReactiveVar(null);
     suggestedLocations = new ReactiveVar(null);
     updateLocation = new ReactiveVar(true);
+    checkinPending = new ReactiveVar(false);
 };
 
 Template.checkinForm.rendered = function(){
@@ -133,6 +139,7 @@ AutoForm.hooks({
 
         beginSubmit: function(){
             Session.set('checkin-form-expanded',false);
+            checkinPending.set(true);
         },
 
         before: {
@@ -173,6 +180,8 @@ AutoForm.hooks({
             // clean up reactive variables
             pictureUrl.set(null);
             LocationSession.reset();
+
+            checkinPending.set(false);
         },
 
         onError: function(operation, error, template) {
@@ -180,6 +189,8 @@ AutoForm.hooks({
                 console.error('checkin failed', error);
                 alert('did not work');
             }
+
+            checkinPending.set(false);
         }
     }
 });

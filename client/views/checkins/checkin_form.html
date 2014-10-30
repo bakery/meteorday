@@ -52,6 +52,10 @@
 				</ul>
 			{{/with}}
 		{{/if}}
+	
+		{{#if isCheckinPending}}
+		<strong>checking in...</strong>
+		{{/if}}
 	</div>
 
 	{{>locationSelector locations=suggestedLocations}}
