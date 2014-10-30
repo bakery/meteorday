@@ -1,6 +1,13 @@
 Foursquare = {
     explore : function(lat, lng, ready){
 
+        // helper to get a venue icon
+        var __getVenueIcon = function(venue){
+            return venue && venue.categories &&
+                [venue.categories[0].icon.prefix,'bg_','64',
+                    venue.categories[0].icon.suffix].join('');
+        };
+
         var authentication = {
             client_id : Meteor.settings.public.foursquare.clientId,
             client_secret : Meteor.settings.public.foursquare.clientSecret,
@@ -39,6 +46,7 @@ Foursquare = {
                     _.each(data.groups[0].items, function(i){
                         locations.push({
                             name : i.venue.name,
+                            icon : __getVenueIcon(i.venue),
                             data : i.venue
                         });
                     });
