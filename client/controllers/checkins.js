@@ -10,15 +10,6 @@ CheckinsController = MobileController.extend({
             checkins : getAllCheckins()
         };
     }
-
-    // action: function () {
-    //     if (this.ready()){
-    //         this.render();
-    //     }
-    //     else {
-    //         this.render('loading');
-    //     }
-    // }
 });
 
 CheckedInController = RouteController.extend({
