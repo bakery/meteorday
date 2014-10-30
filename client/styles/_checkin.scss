@@ -41,6 +41,8 @@
         border-radius: 3px;
         vertical-align: top;
         border: solid 1px #ccc;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .location-button:after {
