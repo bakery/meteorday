@@ -1,6 +1,6 @@
 // Set PhoneGap/Cordova preferences
 App.setPreference('StatusBarOverlaysWebView', false);
-App.setPreference('StatusBarBackgroundColor', '#304b80');
+App.setPreference('StatusBarBackgroundColor', '#333333');
 
 App.icons({
   'iphone': 'resources/icons/app.png',
