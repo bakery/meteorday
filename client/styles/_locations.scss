@@ -1,7 +1,19 @@
 .location-selector-modal {
 
+    .location {
+        white-space: nowrap;
+    }
+
     .location:active {
         background-color: #eee;
+    }
+
+    .location-name {
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-right: 32px;
     }
 
     .location-icon, 
