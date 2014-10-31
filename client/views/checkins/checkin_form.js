@@ -65,6 +65,7 @@ Template.checkinForm.created = function(){
     suggestedLocations = new ReactiveVar(null);
     updateLocation = new ReactiveVar(true);
     checkinPending = new ReactiveVar(false);
+    LocationSession.reset();
 };
 
 Template.checkinForm.rendered = function(){
@@ -73,12 +74,13 @@ Template.checkinForm.rendered = function(){
         var location = Geolocation.latLng();
         
         // only poll foursquare when we have a location 
-        // and the form is expanded and we are not currently showing
-        // location picker
-        if(location && Session.get('checkin-form-expanded') &&
-            LocationSession.getIsLocationSelectorActive()){
+        // and the form is expanded
+        if(location && Session.get('checkin-form-expanded')){
             Foursquare.explore(location.lat, location.lng, function(locations){
-                suggestedLocations.set(locations);
+                // make sure location selector is not active
+                if(!LocationSession.getIsLocationSelectorActive()){
+                    suggestedLocations.set(locations);
+                }
             });
         }
     });
