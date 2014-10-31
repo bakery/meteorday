@@ -5,11 +5,10 @@ App.setPreference('StatusBarBackgroundColor', '#333333');
 App.icons({
   'iphone': 'resources/icons/app.png',
   'iphone_2x': 'resources/icons/app.png'
-});
 
-
-// Pass preferences for a particular PhoneGap/Cordova plugin
-App.configurePlugin('https://github.com/Wizcorp/phonegap-facebook-plugin.git', {
-  APP_ID: 726812950734516,
-  APP_NAME: 'Waldof'
+  // XXX : add Android icons here
+  // 'android_ldpi': 'resources/icons/icon-ldpi.png',
+  // 'android_mdpi': 'resources/icons/icon-mdpi.png',
+  // 'android_hdpi': 'resources/icons/icon-hdpi.png',
+  // 'android_xhdpi': 'resources/icons/icon-xhdpi.png'
 });
