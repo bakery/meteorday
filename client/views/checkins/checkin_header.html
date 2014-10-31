@@ -5,13 +5,13 @@
     </header>
     {{else}}
     <header class="bar bar-nav checkin-bar">
-        {{!--#with currentUserProfile--}}
+        {{#with currentUserProfile}}
         <button class="btn checkin-prompt fa fa-map-marker"></button>
         <div class="profile">
             <img src="{{imageUrl}}" class="profile-pic">
-            <div class="username">{{name}}Mark Downey</div>
+            <div class="username">{{name}}</div>
         </div>
-        {{!--/with--}}
+        {{/with}}
     </header>
     {{/if}}
 </template>

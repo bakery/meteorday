@@ -22,16 +22,16 @@
 							<button class="btn camera"><i class="fa fa-camera-retro"></i></button>
 						{{/if}}
 						<div class="select-location">
+							<div class="location-button location-picker">
 							{{#if currentLocation}}	
 						  		{{> afFieldInput name='locationName' type='hidden' value=currentLocation.name}}
-								<div class="location-button location-picker">
 									<a class="location-selected-name" href="#">
 										{{currentLocation.name}}
 									</a>
-								</div>
 							{{else}}
 								<strong>getting your location...</strong>
 							{{/if}}
+							</div>
 						</div>
 					</div>
 
