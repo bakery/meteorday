@@ -11,7 +11,7 @@ Accounts.onCreateUser(function(options, user){
     if(user.services.facebook){
         extendProfileWith = {
             imageUrl : [
-                'http://graph.facebook.com', user.services.facebook.id, 'picture'
+                'http://graph.facebook.com', user.services.facebook.id, 'picture', '?height=60&width=60'
             ].join('/')
         };
     }

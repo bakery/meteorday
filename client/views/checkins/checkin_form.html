@@ -1,6 +1,6 @@
 <template name="checkinForm">
-	<div class="checkin">
 		{{#if isFormExpanded}}
+		<div class="checkin">
 			<div class="content-padded expanded">
 				{{#autoForm doc=formDocument collection="Checkins" type="insert" id="checkinForm"}}
 					
@@ -35,30 +35,15 @@
 						</div>
 					</div>
 
-					<input type="submit" class="btn-negative btn-block" value="Check in" disabled="disabled">
+					<input type="submit" class="btn-primary btn-block" value="Check in" disabled="disabled">
 				{{/autoForm}}
 			</div>
-		{{else}}
-			{{#with currentUserProfile}}
-				<ul class="table-view prompt">
-  					<li class="table-view-cell">
-  						<div>
-						   <img src="{{imageUrl}}">
-					    </div>
-					    <div class="username">
-						   <strong>{{name}}</strong>
-					    </div>
-  						<button class="btn checkin-prompt fa fa-map-marker">
-  						</button>
-				  </li>
-				</ul>
-			{{/with}}
+		</div>
 		{{/if}}
 	
 		{{#if isCheckinPending}}
 		<strong>checking in...</strong>
 		{{/if}}
-	</div>
 
 	{{>locationSelector locations=suggestedLocations}}
 </template>

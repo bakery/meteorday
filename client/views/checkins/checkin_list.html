@@ -1,12 +1,13 @@
 <template name="checkinsList">
-    <div class="content">
-  		{{> checkinForm}}
-      <div class="card items">
-    			<ul class="table-view">
-    				{{#each checkins}}
-  					 {{> item }}
-  				  {{/each}}
-  		  	</ul>
-  		</div>
-    </div>
+      {{> checkinHeader}}
+      <div class="content {{#if isFormCollapsed}}collapsed{{/if}}">
+  		  {{> checkinForm}}
+        <div class="card items">
+            <ul class="table-view">
+              {{#each checkins}}
+               {{> item }}
+              {{/each}}
+            </ul>
+        </div>
+      </div>
 </template>

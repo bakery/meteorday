@@ -4,7 +4,7 @@ Template.checkinForm.helpers({
     
     isCheckinPending : function(){
         return checkinPending.get();
-    }, 
+    },
 
     currentGeoLocation : function(){
         return Geolocation.latLng();
@@ -91,10 +91,6 @@ Template.checkinForm.events({
         } else {
             template.$('input[type="submit"]').attr('disabled','disabled');
         }
-    },
-
-    'click .checkin-prompt' : function(){
-        Session.set('checkin-form-expanded',true);
     },
 
     'click .location-picker' : function(e, template){

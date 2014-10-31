@@ -1,0 +1,17 @@
+<template name="checkinHeader">
+    {{#if isFormExpanded}}
+    <header class="bar bar-nav">
+        <h1 class="title">Checkin</h1>
+    </header>
+    {{else}}
+    <header class="bar bar-nav checkin-bar">
+        {{!--#with currentUserProfile--}}
+        <button class="btn checkin-prompt fa fa-map-marker"></button>
+        <div class="profile">
+            <img src="{{imageUrl}}http://placehold.it/60x60" class="profile-pic">
+            <div class="username">{{name}}Mark Downey</div>
+        </div>
+        {{!--/with--}}
+    </header>
+    {{/if}}
+</template>
