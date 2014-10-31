@@ -44,7 +44,9 @@
 		{{/if}}
 	
 		{{#if isCheckinPending}}
-		<strong>checking in...</strong>
+		<div class="checkin-loading">
+			<i class="fa fa-circle-o-notch fa-spin"></i>
+		</div>
 		{{/if}}
 
 	{{>locationSelector locations=suggestedLocations}}

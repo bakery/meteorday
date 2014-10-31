@@ -4,6 +4,8 @@
         float: left;
         margin-right: 10px;
         margin-bottom: 10px;
+        height: 53px;
+        width: 53px;
     } 
 
     textarea, select {
@@ -48,7 +50,7 @@
         }
 
     }
-    
+
     .fa, span {
         vertical-align: middle;
     }
@@ -82,4 +84,11 @@
     .loading-location:after {
         content: '';
     }
+
+}
+
+.checkin-loading {
+    margin-top: 20px;
+    text-align: center;
+    color: $dark-grey-color;
 }
