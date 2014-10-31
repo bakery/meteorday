@@ -3,5 +3,11 @@ Template.login.events({
         Meteor.loginWithFacebook(function(err){
             //handle facebook
         });
+    },
+
+    'click .login-meteor' : function() {
+        Meteor.loginWithMeteorDeveloperAccount(function(err){
+            
+        });
     }
 });
