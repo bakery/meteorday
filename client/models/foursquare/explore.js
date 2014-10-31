@@ -15,13 +15,15 @@ Foursquare = {
             v : '20140806'
         };
 
+        var numberOfResultsToFetch = Meteor.settings.public.foursquare.resultsLimit;
+
         console.log('exploring with 4square', lat, lng);
 
         Meteor.http.call('GET','https://api.foursquare.com/v2/venues/explore',
             {
                 params : _.extend({}, authentication, {
                     ll : [lat,lng].join(','),
-                    limit : 10, sortByDistance : 1
+                    limit : numberOfResultsToFetch, sortByDistance : 1
                 })
             },
             function(error, result){
