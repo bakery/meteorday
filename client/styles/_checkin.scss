@@ -35,16 +35,24 @@
     .location-button {
         margin-top: 0;
         position: relative;
-        padding: 14px 50px 14px 35px;
+        padding: 14px 50px 14px 15px;
         overflow: hidden;
         border-radius: 3px;
         vertical-align: top;
         border: solid 1px #ccc;
         text-overflow: ellipsis;
         white-space: nowrap;
+
+        .fa {
+            margin-right: 3px;
+        }
+
+    }
+    
+    .fa, span {
+        vertical-align: middle;
     }
 
-    .location-button:before,
     .location-button:after {
         right: 15px;
         content: '\f078';
@@ -61,18 +69,17 @@
         -webkit-font-smoothing: antialiased;
     }
 
-    .location-button:before {
-        left: 15px;
-        content: '\f041';
-        color: #428bca;
-    }
-
     .location-button:after {
         right: 15px;
         content: '\f078';
     }
 
-    .location-selected-name {
-        // border-bottom: 1px dotted;
+    .loading-location {
+        color: $dark-grey-color;
+        padding-right: 15px;
+    }
+
+    .loading-location:after {
+        content: '';
     }
 }

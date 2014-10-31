@@ -14,4 +14,10 @@
         width: 32px;
         margin-right: 10px;
     }
+
+    .icon-close:before {
+        font-family: FontAwesome;
+        content: '\f00d';
+        color: $primary-text-color;
+    }
 }
