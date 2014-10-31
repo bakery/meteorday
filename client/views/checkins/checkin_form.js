@@ -73,8 +73,10 @@ Template.checkinForm.rendered = function(){
         var location = Geolocation.latLng();
         
         // only poll foursquare when we have a location 
-        // and the form is expanded
-        if(location && Session.get('checkin-form-expanded')){
+        // and the form is expanded and we are not currently showing
+        // location picker
+        if(location && Session.get('checkin-form-expanded') &&
+            LocationSession.getIsLocationSelectorActive()){
             Foursquare.explore(location.lat, location.lng, function(locations){
                 suggestedLocations.set(locations);
             });
@@ -94,6 +96,8 @@ Template.checkinForm.events({
     },
 
     'click .location-picker' : function(e, template){
+
+        LocationSession.setIsLocationSelectorActive(true);
 
         // XXX long lists interfere with the modal overlay
         // hide the list before showing the modal
