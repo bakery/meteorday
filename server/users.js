@@ -16,6 +16,12 @@ Accounts.onCreateUser(function(options, user){
         };
     }
 
+    if(user.services['meteor-developer']){
+        extendProfileWith = {
+            imageUrl : 'http://media.yayart.com/media/images/generated/user-picture-placeholder_60x60.png'
+        };
+    }
+
     var extendedProfile = _.extend(options.profile || {}, extendProfileWith);
 
     return _.extend(user, { profile : extendedProfile });
