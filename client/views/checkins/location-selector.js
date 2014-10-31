@@ -16,6 +16,8 @@ Template.locationSelector.events({
             var restore = modal.data('target');
             $(restore).show();
             modal.removeClass('active');
+
+            LocationSession.setIsLocationSelectorActive(false);
         }
     }
 });
