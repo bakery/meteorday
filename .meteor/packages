@@ -11,8 +11,7 @@ reactive-var
 mdg:geolocation
 mdg:camera
 matb33:collection-hooks
-facebook
-particle4dev:cordova-fb
 reywood:font-awesome-sass
 mrt:moment
 simple:imgur
+accounts-facebook
