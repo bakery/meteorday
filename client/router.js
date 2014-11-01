@@ -39,7 +39,9 @@ Router.map(function () {
     if(Meteor.isCordova){
         this.route('checkins', { path: '/', controller: CheckinsController });
     } else {
-        this.route('dashboard', { path: '/', controller: DashboardController });
+        // temporary disable desktop landing
+        //this.route('dashboard', { path: '/', controller: DashboardController });
+        this.route('notreadyyet', { path : '/' });
     }
 
     
