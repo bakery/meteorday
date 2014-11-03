@@ -14,3 +14,11 @@ Meteor.publish('checkins', function(){
 
     return getAllCheckins();
 });
+
+Meteor.publish('city-stats', function(){
+    return CityStats.find();
+});
+
+Meteor.publish('country-stats', function(){
+    return CountryStats.find();
+});
