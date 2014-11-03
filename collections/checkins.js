@@ -20,6 +20,8 @@ Checkins.after.insert(function(userId, doc) {
 
     var checkinId = this._id;
 
+    // upload image to Imugr
+
     if(doc.photo && !SimpleSchema.RegEx.Url.exec(doc.photo)){
         var parameters = {
             image: doc.photo,
@@ -38,6 +40,11 @@ Checkins.after.insert(function(userId, doc) {
             }
         });
     }
+
+    // update geo stats
+    
+    Stats.processCheckin(doc);
+    
 });
 
 CheckinSchema = new SimpleSchema({
