@@ -116,6 +116,9 @@ Template.map.rendered = function(){
 
     this.autorun(function(){
         theMap.showCities(that.data.cities.fetch());
+    });
+
+    this.autorun(function(){
         theMap.showCheckins(that.data.checkins.fetch());
     });
 };
