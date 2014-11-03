@@ -88,6 +88,49 @@ Template.map.rendered = function(){
                 });
     }
 
+    function updateCities(cities, canvas){
+
+        console.log('updating cities');
+        var color = d3.scale.linear().domain([0,10,20])
+            .range(["red", "white", "green"]);
+        var dimensions = d3.scale.linear().domain([0,20])
+            .range([1,5]);
+
+
+        var selection = canvas.selectAll('image').data(cities, function(d){ return d._id; });
+        
+        selection.enter().append('image').attr('xlink:href',particleUrl)
+            .attr('width', '10px')
+            .attr('height', '10px')
+            .attr("transform", function(d) {
+                return "translate(" + projection([d.longitude, d.latitude]) + ")";
+            }).append("svg:title")
+                .text(function(d, i) { return d.name + '-' + d.country; });
+
+        selection.attr("fill", function(d){ return color(d.counter); })
+            .attr("alt", function(){ return "hello there"; })
+            .attr("transform", function(d){
+                var scale = dimensions(d.counter);
+                return [
+                    "translate(" + projection([d.longitude, d.latitude]) + ")",
+                    "scale(" + scale + "," + scale + ")"
+                ].join(' ');
+            });
+            
+
+            // .append('image').attr('xlink:href',particleUrl)
+            //     .attr('height','10px').attr('width','10px')
+            //     .attr("transform", function(d) {
+            //         return "translate(" + projection([d.longitude, d.latitude]) + ")";
+            //     }).transition().duration(750)
+            //     .delay(function(d, i) { return i * 10; })
+            //     .attr("transform", function(d) {
+            //         return "translate(" + projection([-77.04,38.90]) + ")";
+            //     }).each("end",function() {
+            //         d3.select(this).
+            //           transition().attr("width", "0px");
+            //     });
+    }
 
     d3.json("/world-countries.json", function (error, collection) {
 
@@ -121,6 +164,7 @@ Template.map.rendered = function(){
         
         that.autorun(function(){
             updateCheckins(that.data.checkins.fetch(), fsvg);
+            updateCities(that.data.cities.fetch(), fsvg);
         });
     });
 };

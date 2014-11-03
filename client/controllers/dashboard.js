@@ -2,12 +2,16 @@ DashboardController = DesktopController.extend({
     template: 'dashboard',
 
     waitOn: function () {
-        return Meteor.subscribe('checkins');
+        return [
+            Meteor.subscribe('checkins'),
+            Meteor.subscribe('city-stats')
+        ];
     },
 
     data: function () {
         return {
-            checkins : getAllCheckins()
+            checkins : getAllCheckins(),
+            cities : getAllCityStats()
         };
     }
 });

@@ -50,9 +50,16 @@ CityStatsSchema = new SimpleSchema([BaseStatSchema,{
 CityStats.attachSchema(CityStatsSchema);
 CountryStats.attachSchema(BaseStatSchema);
 
+getAllCityStats = function(){
+    return CityStats.find({});
+};
+
 Stats = {
     processCheckin : function(checkin){
         Geocoder.reverseGeocode(checkin.latitude, checkin.longitude, function(data){
+            
+            console.log('processing checkin', data);
+
             function updateStats(Collection, values){
                 Collection.upsert({ slug : Tools.slugify(values.name) },
                     {
