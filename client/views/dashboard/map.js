@@ -1,4 +1,6 @@
 Template.map.rendered = function(){
+    var particleDestination =
+        Meteor.settings.public.map.checkinDestination;
     var $mapContainer = this.$('#map');
     var particleUrl = "/particle.png";
     var that = this;
@@ -97,10 +99,16 @@ Template.map.rendered = function(){
             .transition().duration(750)
             .delay(function(d, i) { return i * 10; })
             .attr('x',0).attr('y',0)
+            .attr('transform-origin', '20% 40%')
             .attr("transform", function(d) {
-                return "translate(" + self.latLngToXY(38.90,-77.04) + ")";
+                // 25 === 50px/2
+                var transformation = self.latLngToXY(particleDestination.latitude,
+                    particleDestination.longitude);
+                transformation[0] = transformation[0] - 25;
+                transformation[1] = transformation[1] - 25;
+                return "translate(" + transformation + ")";
             }).each("end",function() {
-                d3.select(this).transition().attr("width", "0px").each("end", function(){
+                d3.select(this).transition().attr("opacity",0).each("end", function(){
                     this.remove();
                 });
             });
