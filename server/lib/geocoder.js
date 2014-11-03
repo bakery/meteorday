@@ -29,7 +29,7 @@ Geocoder = {
         return Meteor.http.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params : {
                 latlng: [latitude,longitude].join(','),
-                key: 'AIzaSyDeJxYBiJGB_z0d41KdHuOzACXtaddU0qU'
+                key: Meteor.settings.private.google.apiKey
             }
         }, function(error, result){
             var hasResults = !error && (result.statusCode === 200) &&
@@ -76,7 +76,7 @@ Geocoder = {
                 callback.call(null, response);
 
             } else {
-                console.error('error geolocating',latitude,longitude,error);
+                console.error('error geolocating',latitude,longitude,error,result);
             }
         });
     }
