@@ -35,17 +35,40 @@ Geocoder = {
             var hasResults = !error && (result.statusCode === 200) &&
                 (result.data.results) && (result.data.results.length > 0);
 
+
             if(hasResults){
                 var data = result.data.results[0];
-                var city = _.find(data.address_components, function(ac){
-                    return ac.types.indexOf('locality') !== -1;
-                });
-                var country = _.find(data.address_components, function(ac){
-                    return ac.types.indexOf('country') !== -1;
-                });
+                
+                var cities = _.reduce(result.data.results, function(memo, r){
+                    var city = _.find(r.address_components, function(ac){
+                        return ac.types.indexOf('locality') !== -1;
+                    });
 
-                city = city ? city.long_name : city;
-                country = country ? country.long_name : country;
+                    if(city){
+                        memo.push(city);
+                    }
+
+                    return memo;
+                }, []);
+
+                var countries = _.reduce(result.data.results, function(memo, r){
+                    var country = _.find(r.address_components, function(ac){
+                        return ac.types.indexOf('country') !== -1;
+                    });
+
+                    if(country){
+                        memo.push(country);
+                    }
+
+                    return memo;
+                }, []);
+
+
+                // city = city ? city.long_name : city;
+                // country = country ? country.long_name : country;
+                
+                var city = cities.length > 0 ? cities[0].long_name : null;
+                var country = countries.length ? countries[0].long_name : null;
 
                 var response = {
                     city : city,
