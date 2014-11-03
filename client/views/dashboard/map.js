@@ -58,7 +58,22 @@ Template.map.rendered = function(){
             });
     });
 
+
+    var lastCheckinTime = null;
     theMap.addPlugin('showCheckins', function (layer, data ) {
+        
+        // only grab checkins after lastCheckinTime
+        // data is already sorted by created desc
+        if(lastCheckinTime){
+            data = _.filter(data, function(d){
+                return d.created > lastCheckinTime;
+            });
+        }
+
+        if(data.length !== 0){
+            lastCheckinTime = data[0].created;
+        }
+
         // hold this in a closure
         var self = this;
         // a class you'll add to the DOM elements
@@ -85,8 +100,9 @@ Template.map.rendered = function(){
             .attr("transform", function(d) {
                 return "translate(" + self.latLngToXY(38.90,-77.04) + ")";
             }).each("end",function() {
-                d3.select(this).
-                  transition().attr("width", "0px");
+                d3.select(this).transition().attr("width", "0px").each("end", function(){
+                    this.remove();
+                });
             });
     });
 
