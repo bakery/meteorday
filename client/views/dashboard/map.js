@@ -15,16 +15,16 @@ Template.map.rendered = function(){
         }
     });
 
-    theMap.addPlugin('showCities', function ( layer, data ) {  
+    theMap.addPlugin('showCities', function (layer, data ) {
         // hold this in a closure
         var self = this;
         // a class you'll add to the DOM elements
         var className = 'cities';
 
         // make a D3 selection.
-        var cities = layer
-               .selectAll(className)
-               .data( data, function(d){ return d._id; });
+        var cities = layer.selectAll(className).data(data, function(d){
+            return d._id;
+        });
 
         cities.enter().append('image').attr('xlink:href',particleUrl)
             .attr('width', '10px')
@@ -41,7 +41,7 @@ Template.map.rendered = function(){
                 .text(function(d, i) { return d.name + '-' + d.country; });
     });
 
-    theMap.addPlugin('showCheckins', function ( layer, data ) {
+    theMap.addPlugin('showCheckins', function (layer, data ) {
         // hold this in a closure
         var self = this;
         // a class you'll add to the DOM elements
