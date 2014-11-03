@@ -16,30 +16,46 @@ Template.map.rendered = function(){
     });
 
     theMap.addPlugin('showCities', function (layer, data ) {
-        // hold this in a closure
-        var self = this;
-        // a class you'll add to the DOM elements
-        var className = 'cities';
 
-        // make a D3 selection.
+        var maxCounter = _.max(data, function(d){ return d.counter; }).counter;
+        var scales = d3.scale.linear().domain([0,maxCounter]).range([1,10]);
+        var calculateSize = function(value,scales){
+            var baseSize = 10;
+            var scaling = Math.floor(scales(value));
+            return baseSize*scaling;
+        };
+        var self = this;
+        var className = 'cities';
         var cities = layer.selectAll('.' + className).data(data, function(d){
             return d._id;
         });
 
+
+        // inserts
         cities.enter().append('image').attr('xlink:href',particleUrl)
-            .attr('class', className)
-            .attr('width', '10px')
-            .attr('height', '10px')
-            .attr('x', function ( datum ) {
-                var latLng = self.latLngToXY(datum.latitude, datum.longitude);
-                return latLng[0] - 5; // 5 === 10px/2
-            })
-            .attr('y', function ( datum ) {
-                var latLng = self.latLngToXY(datum.latitude, datum.longitude);
-                return latLng[1] - 5; // 5 === 10px/2
-            })
-            .append("svg:title")
+            .attr('class', className).append("svg:title")
                 .text(function(d, i) { return d.name + '-' + d.country; });
+
+        // updates        
+        cities
+            .attr('width', function(d){
+                var size = calculateSize(d.counter,scales);
+                return size + 'px';
+            })
+            .attr('height', function(d){
+                var size = calculateSize(d.counter,scales);
+                return size + 'px';
+            })
+            .attr('x', function(d){
+                var size = calculateSize(d.counter,scales);
+                var latLng = self.latLngToXY(d.latitude, d.longitude);
+                return latLng[0] - Math.floor(size/2);
+            })
+            .attr('y', function(d){
+                var size = calculateSize(d.counter,scales);
+                var latLng = self.latLngToXY(d.latitude, d.longitude);
+                return latLng[1] - Math.floor(size/2);
+            });
     });
 
     theMap.addPlugin('showCheckins', function (layer, data ) {
