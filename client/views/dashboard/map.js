@@ -22,11 +22,12 @@ Template.map.rendered = function(){
         var className = 'cities';
 
         // make a D3 selection.
-        var cities = layer.selectAll(className).data(data, function(d){
+        var cities = layer.selectAll('.' + className).data(data, function(d){
             return d._id;
         });
 
         cities.enter().append('image').attr('xlink:href',particleUrl)
+            .attr('class', className)
             .attr('width', '10px')
             .attr('height', '10px')
             .attr('x', function ( datum ) {
@@ -48,10 +49,11 @@ Template.map.rendered = function(){
         var className = 'checkins';
 
         // make a D3 selection.
-        var checkins = layer.selectAll(className)
+        var checkins = layer.selectAll('.' + className)
             .data( data, function(d){ return d._id; });
 
         checkins.enter().append('image').attr('xlink:href',particleUrl)
+            .attr('class', className)
             .attr('height','50px').attr('width','50px')
             .attr('x', function ( datum ) {
                 var latLng = self.latLngToXY(datum.latitude, datum.longitude);
