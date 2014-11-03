@@ -51,7 +51,7 @@ CityStats.attachSchema(CityStatsSchema);
 CountryStats.attachSchema(BaseStatSchema);
 
 getAllCityStats = function(){
-    return CityStats.find({});
+    return CityStats.find({}, {sort: {'counter': -1}});
 };
 
 Stats = {

@@ -3,6 +3,7 @@
 	width: auto;
 	height: 100%;
 	overflow: hidden;
+	padding-bottom: 40px;
 
 	// width: 100%;
 	// height: 100%;
@@ -20,6 +21,7 @@
 	overflow: scroll;
 	position: relative;
 	padding-top: 106px;
+	border-left: 1px solid $primary-color;
 
 	.card.items .table-view-cell {
 		padding: 11px 20px 11px 20px;
@@ -65,4 +67,28 @@
 
 .dashboard-title {
 	text-align: center;
+}
+
+.leaderboard {
+    width: auto;
+    overflow: hidden;
+    height: 40px;
+    bottom: 0;
+    margin-top: -40px;
+    background-color: $light-grey-color;
+}
+
+@-webkit-keyframes marquee {  
+    0%  {  
+        transform: translateX(100%);
+    }
+    100% {  
+        transform: translateX(0%);  
+    }  
+}
+
+.marquee {
+    animation: marquee 20s linear infinite; 
+    -webkit-animation: marquee 20s linear infinite;
+    margin: 9px 0;
 }
