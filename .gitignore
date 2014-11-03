@@ -3,3 +3,4 @@
 .sass-cache/*
 settings.json
 production.settings.json
+staging.settings.json
