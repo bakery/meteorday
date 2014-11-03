@@ -62,10 +62,6 @@ Geocoder = {
 
                     return memo;
                 }, []);
-
-
-                // city = city ? city.long_name : city;
-                // country = country ? country.long_name : country;
                 
                 var city = cities.length > 0 ? cities[0].long_name : null;
                 var country = countries.length ? countries[0].long_name : null;
