@@ -18,7 +18,7 @@ $desktop-breakpoint: 1224px;
     display: none;
 }
 
-$header-height: 88px;
+$header-height: 81px;
 $footer-height: 65px;
 
 .list-container {
@@ -49,7 +49,7 @@ $footer-height: 65px;
     width: inherit;
     height: $header-height;
     box-shadow: rgba(255,255,255,0.1) 0 1px 0,rgba(0,0,0,0.6) 0 1px 3px 0px;
-    padding: 15px 30px 10px 30px;
+    padding: 12px 30px 6px 30px;
     font-weight: 600;
     letter-spacing: 0.5px;
 
@@ -101,7 +101,7 @@ $footer-height: 65px;
         bottom: 0;
         margin-top: -40px;
         background-color: $map-color;
-        color: $primary-text-color;
+        color: rgba(255,255,255, 0.8);
         display: block;
         font-weight: 100;
     }
