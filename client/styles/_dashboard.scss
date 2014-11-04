@@ -65,7 +65,7 @@ $footer-height: 65px;
 }
 
 .checkin-footer {
-    background-color: #fff;
+    background-color: $light-grey-color;
     padding: 10px;
     border: solid 1px #ccc;
     position: fixed;
@@ -113,6 +113,7 @@ $footer-height: 65px;
     margin: 9px 0;
     height: 21px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .city-stat {
