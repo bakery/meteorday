@@ -118,15 +118,15 @@ $footer-height: 65px;
 }
 
 .city-stat {
-    margin-left: 10px;
+    margin-left: 15px;
 
     &:after {
-        content: '\002F';
-        margin-left: 10px;
+        content: '\2022';
+        margin-left: 15px;
     }
 
     .flag-icon {
-        margin: 0 5px;
+        margin: 0 8px 0 4px;
         width: 18px;
         height: 14px;
     }
@@ -136,4 +136,14 @@ $footer-height: 65px;
     &:after {
         content: '';
     }
+}
+
+.meteor-icon {
+    height: 18px;
+    width: 19px;
+    background-image: url('../favicon.ico');
+    background-size: 19px 18px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
 }

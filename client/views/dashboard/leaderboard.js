@@ -4,9 +4,9 @@ Template.leaderboard.rendered = function(){
         that = this;
 
     var setLeaderboard = function(){
-        var content = 'Top Meteor Cities: ';
+        var content = '';
         _.each(cities.fetch(), function(city, i){
-            content += UI.toHTMLWithData(Template.city_stat, {index: i+1, city: city});
+            content += UI.toHTMLWithData(Template.city_stat, city);
         });
         that.$('.marquee-content').html(content);
     };
