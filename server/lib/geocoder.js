@@ -65,10 +65,12 @@ Geocoder = {
                 
                 var city = cities.length > 0 ? cities[0].long_name : null;
                 var country = countries.length ? countries[0].long_name : null;
+                var countryShortName = countries.length ? countries[0].short_name : null;
 
                 var response = {
                     city : city,
                     country : country,
+                    countryShortName : countryShortName,
                     latitude : parseFloat(data.geometry.location.lat),
                     longitude : parseFloat(data.geometry.location.lng)
                 };
