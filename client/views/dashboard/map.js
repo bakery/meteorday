@@ -1,4 +1,12 @@
 Template.map.rendered = function(){
+
+    // mobile optimization : do not render the map if
+    // the map container is not visible
+    if($('.map-container:visible').length === 0){
+        return;
+    }
+
+
     var particleDestination =
         Meteor.settings.public.map.checkinDestination;
     var $mapContainer = this.$('#map');

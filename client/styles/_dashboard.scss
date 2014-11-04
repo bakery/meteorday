@@ -1,31 +1,39 @@
+$desktop-breakpoint: 1224px;
+
 .map-container {
-	
-	width: auto;
-	height: 100%;
-	overflow: hidden;
-	padding-bottom: 40px;
-
-	// width: 100%;
-	// height: 100%;
-
-	.map-canvas {
-		width: 100%;
+	@media only screen and (min-width : $desktop-breakpoint) {
+		width: auto;
 		height: 100%;
+		overflow: hidden;
+		padding-bottom: 40px;
+
+		.map-canvas {
+			width: 100%;
+			height: 100%;
+		}
+
+		display: block;
 	}
+
+	display: none;
 }
 
 .list-container {
-	float: right;
-	width: 300px;
-	height: 100%;
-	overflow: scroll;
-	position: relative;
-	padding-top: 106px;
-	border-left: 1px solid $primary-color;
+	@media only screen and (min-width : $desktop-breakpoint) {
+		float: right;
+		width: 300px;
+		height: 100%;
+		overflow: scroll;
+		position: relative;
+		padding-top: 106px;
+		border-left: 1px solid $primary-color;
 
-	.card.items .table-view-cell {
-		padding: 11px 20px 11px 20px;
+		.card.items .table-view-cell {
+			padding: 11px 20px 11px 20px;
+		}
 	}
+
+	width: 100%;
 }
 
 .checkin-header {
@@ -82,12 +90,17 @@
 }
 
 .leaderboard {
-    width: auto;
-    overflow: hidden;
-    height: 40px;
-    bottom: 0;
-    margin-top: -40px;
-    background-color: $light-grey-color;
+    @media only screen and (min-width : $desktop-breakpoint) {
+	    width: auto;
+	    overflow: hidden;
+	    height: 40px;
+	    bottom: 0;
+	    margin-top: -40px;
+	    background-color: $light-grey-color;
+	    display: block;
+	}
+
+	display: none;
 }
 
 @-webkit-keyframes marquee {  
