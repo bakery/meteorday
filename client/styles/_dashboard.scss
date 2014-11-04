@@ -18,6 +18,9 @@ $desktop-breakpoint: 1224px;
     display: none;
 }
 
+$header-height: 90px;
+$footer-height: 65px;
+
 .list-container {
     @media only screen and (min-width : $desktop-breakpoint) {
         float: right;
@@ -25,7 +28,8 @@ $desktop-breakpoint: 1224px;
         height: 100%;
         overflow: scroll;
         position: relative;
-        padding-top: 106px;
+        padding-top: $header-height;
+        padding-bottom: $footer-height;
         border-left: 1px solid $primary-color;
 
         .card.items .table-view-cell {
@@ -43,9 +47,9 @@ $desktop-breakpoint: 1224px;
     top:0;
     z-index: 10;
     width: inherit;
-    height: 106px;
+    height: $header-height;
     box-shadow: rgba(255,255,255,0.1) 0 1px 0,rgba(0,0,0,0.6) 0 1px 3px 0px;
-    padding: 20px 30px;
+    padding: 12px 30px;
     font-weight: 600;
     letter-spacing: 0.5px;
 
@@ -62,14 +66,14 @@ $desktop-breakpoint: 1224px;
 
 .checkin-footer {
     background-color: #fff;
-    padding: 0.5em;
+    padding: 10px;
     border: solid 1px #ccc;
-
     position: fixed;
     bottom: 0;
     z-index: 10;
     width: inherit;
-    height: 68px;
+    height: $footer-height;
+    text-align: center;
 }
 
 .dashboard-logo {
@@ -96,8 +100,10 @@ $desktop-breakpoint: 1224px;
         height: 40px;
         bottom: 0;
         margin-top: -40px;
-        background-color: $light-grey-color;
+        background-color: $map-color;
+        color: $primary-text-color;
         display: block;
+        font-weight: 100;
     }
 
     display: none;
