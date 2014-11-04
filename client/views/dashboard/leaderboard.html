@@ -3,3 +3,10 @@
         <div class="marquee-content"></div>
     </div>
 </template>
+
+<template name="city_stat">
+    <span class="city-stat">
+        <strong>{{index}}.</strong> <span class="flag-icon flag-icon-{{toLowerCase city.countryShortName}}"></span>
+        {{city.name}} ({{city.counter}})
+    </span>
+</template>

@@ -100,18 +100,6 @@ $desktop-breakpoint: 1224px;
         display: block;
     }
 
-    li {
-        margin: 0;
-        padding: 0;
-        float: left;
-        margin-right: 10px;
-    }
-
-    ol {
-        margin: 0;
-        list-style: decimal inside;
-    }
-
     display: none;
 }
 
@@ -119,4 +107,23 @@ $desktop-breakpoint: 1224px;
     margin: 9px 0;
     height: 21px;
     overflow: hidden;
+}
+
+.city-stat {
+    margin-left: 10px;
+
+    &:after {
+        content: '\002F';
+        margin-left: 10px;
+    }
+
+    .flag-icon {
+        margin: 0 5px;
+    }
+}
+
+.city-stat:last-child {
+    &:after {
+        content: '';
+    }
 }

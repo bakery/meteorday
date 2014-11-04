@@ -4,19 +4,27 @@ Template.leaderboard.rendered = function(){
         that = this;
 
     var setLeaderboard = function(){
-        var  content = "Top Cities: ";
+        var content = 'Top Meteor Cities: ';
         _.each(cities.fetch(), function(city, i){
-            content += (i+1)+'.'+' '+city.name+' ('+city.counter+') - ';
+            content += UI.toHTMLWithData(Template.city_stat, {index: i+1, city: city});
         });
-        content = content.substring(0, content.length - 2);
         that.$('.marquee-content').html(content);
     };
 
     setLeaderboard();
+
     this.$('.marquee').bind('finished', function(){
         setLeaderboard();
     }).marquee({
-        duration: 5000,
+        duration: 20000,
         pauseOnHover: true
     });
 };
+
+Handlebars.registerHelper('toLowerCase', function(value) {
+    if (value && typeof value === 'string') {
+        return value.toLowerCase();
+    } else {
+        return '';
+    }
+});
