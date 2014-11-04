@@ -52,6 +52,18 @@
 	}
 }
 
+.checkin-footer {
+	background-color: #fff;
+	padding: 0.5em;
+	border: solid 1px #ccc;
+
+	position: fixed;
+	bottom: 0;
+	z-index: 10;
+	width: inherit;
+	height: 68px;
+}
+
 .dashboard-logo {
 	width: 60px;
 	height: 56px;
