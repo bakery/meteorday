@@ -7,10 +7,14 @@ Checkins.allow({
 });
 
 // XXX Bring this back after simulation
-// Checkins.before.insert(function (userId, doc) {
-//     var currentUser = Meteor.user();
-//     _.extend(doc, { authorProfile : currentUser.profile });
-// });
+Checkins.before.insert(function (userId, doc) {
+    try{
+        var currentUser = Meteor.user();
+        _.extend(doc, { authorProfile : currentUser.profile });
+    } catch(e) {
+        // simulation
+    }
+});
 
 Checkins.after.insert(function(userId, doc) {
 

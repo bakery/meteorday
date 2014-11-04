@@ -37,6 +37,9 @@ CityStatsSchema = new SimpleSchema([BaseStatSchema,{
     country : {
         type : String
     },
+    countryShortName : {
+        type : String
+    },
     latitude : {
         type : Number,
         decimal: true
@@ -73,6 +76,7 @@ Stats = {
                 updateStats(CityStats, {
                     name : data.city,
                     country : Tools.slugify(data.country),
+                    countryShortName : data.countryShortName,
                     latitude : data.latitude,
                     longitude : data.longitude
                 });
