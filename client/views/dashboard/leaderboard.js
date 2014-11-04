@@ -9,14 +9,14 @@ Template.leaderboard.rendered = function(){
             content += (i+1)+'.'+' '+city.name+' ('+city.counter+') - ';
         });
         content = content.substring(0, content.length - 2);
-        that.$('.marquee').html(content);
+        that.$('.marquee-content').html(content);
     };
 
     setLeaderboard();
     this.$('.marquee').bind('finished', function(){
         setLeaderboard();
     }).marquee({
-        duration: 20000,
+        duration: 5000,
         pauseOnHover: true
     });
 };
