@@ -1,21 +1,5 @@
 Geocoder = {
 
-    __cache : [],
-
-    __getFromCache : function(latitude,longitude){
-        return _.find(this.__cache, function(c){
-            return (c.latitude === latitude) && (c.longitude === longitude);
-        });
-    },
-
-    __putToCache : function(latitude, longitude, data){
-        this.__cache.push({
-            latitude : latitude,
-            longitude : longitude,
-            data : data
-        });
-    },
-
     reverseGeocode : function(latitude, longitude, callback){
 
         var that = this;
@@ -29,7 +13,7 @@ Geocoder = {
         return Meteor.http.get('https://maps.googleapis.com/maps/api/geocode/json', {
             params : {
                 latlng: [latitude,longitude].join(','),
-                key: Meteor.settings.private.google.apiKey
+                key: this.__apiKey()
             }
         }, function(error, result){
             var hasResults = !error && (result.statusCode === 200) &&
@@ -81,5 +65,25 @@ Geocoder = {
                 console.error('error geolocating',latitude,longitude,error,result);
             }
         });
+    },
+
+    __cache : [],
+
+    __getFromCache : function(latitude,longitude){
+        return _.find(this.__cache, function(c){
+            return (c.latitude === latitude) && (c.longitude === longitude);
+        });
+    },
+
+    __putToCache : function(latitude, longitude, data){
+        this.__cache.push({
+            latitude : latitude,
+            longitude : longitude,
+            data : data
+        });
+    },
+
+    __apiKey : function(){
+        return Tools.getRandomValue(Meteor.settings.private.google.apiKey);
     }
 };
