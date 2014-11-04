@@ -18,7 +18,8 @@ Template.map.rendered = function(){
         projection: 'mercator',
         geographyConfig: {
             popupOnHover: false,
-            highlightOnHover: false
+            highlightOnHover: false,
+            borderColor: '#4A4A70'
         },
         fills: {
             defaultFill: '#2C2C43'
