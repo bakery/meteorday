@@ -8,16 +8,14 @@ Foursquare = {
                     venue.categories[0].icon.suffix].join('');
         };
 
+        var key = this.__apiKey();
         var authentication = {
-            client_id : Meteor.settings.public.foursquare.clientId,
-            client_secret : Meteor.settings.public.foursquare.clientSecret,
+            client_id : key.clientId,
+            client_secret : key.clientSecret,
             m : 'swarm',
             v : '20140806'
         };
-
-        var numberOfResultsToFetch = Meteor.settings.public.foursquare.resultsLimit;
-
-        console.log('exploring with 4square', lat, lng);
+        var numberOfResultsToFetch = key.resultsLimit;
 
         Meteor.http.call('GET','https://api.foursquare.com/v2/venues/explore',
             {
@@ -59,5 +57,9 @@ Foursquare = {
                 }
             }
         );
+    },
+
+    __apiKey : function(){
+        return Tools.getRandomValue(Meteor.settings.public.foursquare);
     }
 };

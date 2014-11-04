@@ -30,7 +30,7 @@ Checkins.after.insert(function(userId, doc) {
     if(doc.photo && !SimpleSchema.RegEx.Url.exec(doc.photo)){
         var parameters = {
             image: doc.photo,
-            apiKey: Meteor.settings.private.imugr.apiKey
+            apiKey: Tools.getRandomValue(Meteor.settings.private.imugr.apiKey)
         };
 
         Imgur.upload(parameters, function (error, data) {
