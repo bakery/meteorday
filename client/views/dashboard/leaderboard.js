@@ -4,7 +4,7 @@ Template.leaderboard.rendered = function(){
 
     var setLeaderboard = function(){
         
-        var cities = _.first(that.data.cities.fetch(), 20),
+        var cities = that.data.cities.fetch(),
             content = '';
 
         _.each(cities, function(city, i){
