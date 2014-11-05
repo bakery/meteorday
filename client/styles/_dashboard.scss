@@ -40,6 +40,19 @@ $footer-height: 65px;
     width: 100%;
 }
 
+.checkin-content {
+    @media only screen and (max-width : $desktop-breakpoint) {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        position: absolute;
+        top: $header-height;
+        right: 0;
+        bottom: $footer-height;
+        left: 0;
+    }
+}
+
+
 .checkin-header {
     background-color: $secondary-color;
     color: $secondary-text-color;
