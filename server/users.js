@@ -17,8 +17,15 @@ Accounts.onCreateUser(function(options, user){
     }
 
     if(user.services['meteor-developer']){
+        var email = user.services['meteor-developer'].emails &&
+            user.services['meteor-developer'].emails[0] &&
+            user.services['meteor-developer'].emails[0].address;
+        var url = email ? Gravatar.imageUrl(email, {
+            size: 60, default: 'retro'
+        }) : null;
+
         extendProfileWith = {
-            imageUrl : 'http://media.yayart.com/media/images/generated/user-picture-placeholder_60x60.png'
+            imageUrl : url
         };
     }
 
