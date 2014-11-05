@@ -6,7 +6,7 @@ setInterval(function(){
 
 Template.item.helpers({
     prettyCheckinTime : function(){
-        return moment(this.created).from(timeRightNow.get());
+        return moment(this.created).from(timeRightNow.get(),true);
     },
 
     city : function(){
