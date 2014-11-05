@@ -3,17 +3,15 @@ DashboardController = DesktopController.extend({
 
     waitOn: function () {
         return [
-            Meteor.subscribe('checkins'),
+            Meteor.subscribe('checkins',Meteor.settings.public.checkins.dashboardLimit),
             Meteor.subscribe('city-stats')
         ];
     },
 
     data: function () {
         return {
-            checkins : getAllCheckins(),
+            checkins : getAllCheckins(Meteor.settings.public.checkins.dashboardLimit),
             cities : getAllCityStats()
         };
     }
 });
-
-// http://d3.artzub.com/wbca/

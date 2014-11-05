@@ -107,11 +107,11 @@ CheckinSchema = new SimpleSchema({
 
 Checkins.attachSchema(CheckinSchema);
 
-getAllCheckins = function(){
+getAllCheckins = function(limit){
     return Checkins.find({},{
         sort : {
             created : -1
         },
-        limit : Meteor.settings.public.checkins.limit
+        limit : limit || Meteor.settings.public.checkins.limit
     });
 };
