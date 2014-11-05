@@ -10,7 +10,7 @@ Template.map.rendered = function(){
     var particleDestination =
         Meteor.settings.public.map.checkinDestination;
     var $mapContainer = this.$('#map');
-    var particleUrl = "/particle.png";
+    var particleUrl = "https://s3-eu-west-1.amazonaws.com/meteorday/particle.png";
     var that = this;
     var theMap = new Datamap({
         element: this.$('#map')[0],
