@@ -1,5 +1,5 @@
 $desktop-breakpoint: 1224px;
-$header-height: 70px;
+$header-height: 76px;
 $footer-height: 65px;
 
 .map-container {
@@ -59,7 +59,7 @@ $footer-height: 65px;
     z-index: 10;
     width: inherit;
     height: $header-height;
-    padding: 15px 30px 0 30px;
+    padding: 20px 30px 0 30px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-align: center;
@@ -72,7 +72,7 @@ $footer-height: 65px;
     text-align: center;
     font-size: 11px;
     font-weight: 100;
-    margin-top: 5px;
+    margin-top: 4px;
 
     a {
         text-decoration: none;
