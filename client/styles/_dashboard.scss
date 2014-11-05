@@ -1,4 +1,6 @@
 $desktop-breakpoint: 1224px;
+$header-height: 70px;
+$footer-height: 65px;
 
 .map-container {
     @media only screen and (min-width : $desktop-breakpoint) {
@@ -17,9 +19,6 @@ $desktop-breakpoint: 1224px;
 
     display: none;
 }
-
-$header-height: 70px;
-$footer-height: 65px;
 
 .list-container {
     @media only screen and (min-width : $desktop-breakpoint) {
@@ -52,7 +51,6 @@ $footer-height: 65px;
     }
 }
 
-
 .checkin-header {
     background-color: $secondary-color;
     color: $secondary-text-color;
@@ -83,22 +81,22 @@ $footer-height: 65px;
 }
 
 .checkin-footer {
+    width: inherit;
+    height: $footer-height;
     background-color: $light-grey-color;
     padding: 10px;
     border: solid 1px #ccc;
     position: fixed;
     bottom: 0;
     z-index: 10;
-    width: inherit;
-    height: $footer-height;
     text-align: center;
 }
 
 .leaderboard {
     @media only screen and (min-width : $desktop-breakpoint) {
         width: auto;
-        overflow: hidden;
         height: 40px;
+        overflow: hidden;
         bottom: 0;
         margin-top: -40px;
         background-color: $map-color;

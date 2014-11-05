@@ -12,7 +12,6 @@
 
     .profile-image-wrapper {
         img {
-            //float: left;
             width: $profile-image-size;
             height: $profile-image-size;
             border-radius: 3px;
@@ -22,16 +21,18 @@
     }
 
     .body-wrapper {
+        
         padding-left: $profile-image-size*1.2;
         margin-top: -1px;
+        
         img {
             display: block;
-            // width: $checkin-image-size;
             border-radius: 3px;
             margin-top: 5px;
             margin-bottom: 5px;
             max-width: 100%;
         }
+        
         p {
             padding: 0.5em 0.5em 0.5em 0;
         }

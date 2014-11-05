@@ -1,3 +1,5 @@
+$checkin-header-height: 88px;
+
 .checkin {
     img {
         border-radius: 4px;
@@ -91,4 +93,48 @@
     margin-top: 20px;
     text-align: center;
     color: $dark-grey-color;
+}
+
+.checkin-bar {
+    height: $checkin-header-height;
+    overflow: hidden;
+    padding: 14px 15px 14px 15px;
+
+    .profile {
+        float: none;
+        width: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .username {
+        line-height: 44px;
+    }
+
+    .profile-pic {
+        margin-right: 15px;
+        border-radius: 4px;
+        width: 60px;
+    }
+
+    .profile-pic, .username {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .checkin-prompt {
+        float: right;
+        height: 60px;
+        width: 60px;
+        border-radius: 60px;
+        top: 0px;
+        font-size: 28px;
+        color: $secondary-color;
+        border: none;
+    }
+
+}
+
+.bar-nav ~ .content.collapsed {
+    padding-top: $checkin-header-height;
 }
