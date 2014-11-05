@@ -1,4 +1,4 @@
-Meteor.publish('checkins', function(){
+Meteor.publish('checkins', function(limit){
     
     // use this for throttling purposes (e.g. to debug loading template)
     // var self = this;
@@ -12,7 +12,7 @@ Meteor.publish('checkins', function(){
     //     self.ready();
     // }, 5000);
 
-    return getAllCheckins();
+    return getAllCheckins(limit);
 });
 
 Meteor.publish('city-stats', function(){
