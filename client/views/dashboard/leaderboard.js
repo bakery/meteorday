@@ -1,11 +1,11 @@
 Template.leaderboard.rendered = function(){
     
-    var cities = this.data.cities,
-        that = this;
+    var cities = _.first(this.data.cities.fetch(), 20);
+    var that = this;
 
     var setLeaderboard = function(){
         var content = '';
-        _.each(cities.fetch(), function(city, i){
+        _.each(cities, function(city, i){
             content += UI.toHTMLWithData(Template.city_stat, city);
         });
         that.$('.marquee-content').html(content);
