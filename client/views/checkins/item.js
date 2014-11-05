@@ -11,5 +11,13 @@ Template.item.helpers({
 
     city : function(){
         return this.geography && this.geography.cityId;
+    },
+
+    platformIsIOS : function(){
+        return this.device && this.device.platform === 'iOS';
+    },
+
+    platformIsAndroid : function(){
+        return this.device && this.device.platform === 'Android';
     }
 });
