@@ -102,6 +102,11 @@ CheckinSchema = new SimpleSchema({
         type : Object,
         blackbox : true,
         optional : true
+    },
+    geography : {
+        type : Object,
+        blackbox : true,
+        optional : true
     }
 });
 

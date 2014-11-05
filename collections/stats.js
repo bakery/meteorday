@@ -63,17 +63,22 @@ Stats = {
             
             console.log('processing checkin', data);
 
+            var geography = {};
+
             function updateStats(Collection, values){
-                Collection.upsert({ slug : Tools.slugify(values.name) },
+                var upsertResult = Collection.upsert({ slug : Tools.slugify(values.name) },
                     {
                         $set : values,
                         $inc: { counter: 1 }
                     }
                 );
+
+                return upsertResult.insertedId ? upsertResult.insertedId :
+                    Collection.findOne({ slug : Tools.slugify(values.name) })._id;
             }
 
             if(data.city){
-                updateStats(CityStats, {
+                geography.cityId = updateStats(CityStats, {
                     name : data.city,
                     country : Tools.slugify(data.country),
                     countryShortName : data.countryShortName,
@@ -83,10 +88,12 @@ Stats = {
             }
 
             if(data.country){
-                updateStats(CountryStats, {
+                geography.countryId = updateStats(CountryStats, {
                     name : data.country
                 });
             }
+
+            Checkins.update(checkin._id, { $set : { geography : geography } });
         });
     }
 };
