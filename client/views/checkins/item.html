@@ -4,16 +4,18 @@
 			<div class="profile-image-wrapper">
 				<img src="{{authorProfile.imageUrl}}">
 			</div>
+
 			<div class="body-wrapper">
+				<span class="time">{{prettyCheckinTime}}</span>
 				<strong>{{authorProfile.name}}</strong>
 				<p>{{text}}</p>
 				{{#if photo}}
 					<img src="{{photo}}">
 				{{/if}}
 				{{#if locationName}}
-					<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}} - </span>
+					<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}}</span>
 				{{/if}}
-				<span class="time">{{prettyCheckinTime}}</span>
+				
 				{{#if platformIsIOS}}<i class="fa fa-apple device"></i>{{/if}}
 				{{#if platformIsAndroid}}<i class="fa fa-android device"></i>{{/if}}
 			</div>
