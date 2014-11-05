@@ -21,7 +21,7 @@ Accounts.onCreateUser(function(options, user){
             user.services['meteor-developer'].emails[0] &&
             user.services['meteor-developer'].emails[0].address;
         var url = email ? Gravatar.imageUrl(email, {
-            size: 60, default: 'retro'
+            size: 100, default: 'retro'
         }) : null;
 
         extendProfileWith = {
