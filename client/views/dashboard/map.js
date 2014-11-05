@@ -41,9 +41,41 @@ Template.map.rendered = function(){
             return d._id;
         });
 
+        var __pickParticleImage = function(d){
+            var particles = {
+                red: {
+                    url: '/particle-red.png',
+                    check: function(value){
+                        return value/maxCounter < 0.3;
+                    }
+                },
+
+                yellow: {
+                    url: '/particle-yellow.png',
+                    check: function(value){
+                        return (value/maxCounter >= 0.3) &&
+                            (value/maxCounter < 0.6);
+                    }
+                },
+
+                white: {
+                    url: particleUrl,
+                    check: function(value){
+                        return (value/maxCounter >= 0.6);
+                    }
+                }
+            };
+
+            var particle = _.find(_.keys(particles), function(pk){
+                return particles[pk].check(d.counter);
+            });
+
+            return particle ? particles[particle].url : null;
+        };
+
 
         // inserts
-        cities.enter().append('image').attr('xlink:href',particleUrl)
+        cities.enter().append('image').attr('xlink:href',__pickParticleImage)
             .attr('data-id', function(d){ return d._id; })
             .attr('class', className).append("svg:title")
                 .text(function(d, i) { return d.name + '-' + d.country; });
