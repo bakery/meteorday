@@ -118,6 +118,7 @@ $footer-height: 65px;
 
 .city-stat {
     margin-left: 15px;
+    letter-spacing: 0.5px;
 
     &:after {
         content: '\2022';
@@ -145,4 +146,29 @@ $footer-height: 65px;
     display: inline-block;
     position: relative;
     top: 3px;
+}
+
+.stats {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+}
+
+.stats-item {
+    margin-right: 20px;
+    text-align: center;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+
+    .stats-value {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .stats-label {
+        font-size: 12px;
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
 }
