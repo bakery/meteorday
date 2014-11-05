@@ -14,6 +14,8 @@
 					<span class="location"><i class="fa fa-map-marker"></i>  {{locationName}} - </span>
 				{{/if}}
 				<span class="time">{{prettyCheckinTime}}</span>
+				{{#if platformIsIOS}}<i class="fa fa-apple device"></i>{{/if}}
+				{{#if platformIsAndroid}}<i class="fa fa-android device"></i>{{/if}}
 			</div>
 		</div>
 	</li>
