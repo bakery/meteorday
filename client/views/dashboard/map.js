@@ -44,6 +44,7 @@ Template.map.rendered = function(){
 
         // inserts
         cities.enter().append('image').attr('xlink:href',particleUrl)
+            .attr('data-id', function(d){ return d._id; })
             .attr('class', className).append("svg:title")
                 .text(function(d, i) { return d.name + '-' + d.country; });
 
@@ -69,7 +70,17 @@ Template.map.rendered = function(){
             });
     });
 
-
+    theMap.addPlugin('selectCity', function(layer, selectedCity){
+        if(selectedCity){
+            d3.select('svg > .showCities > image[data-id="' + selectedCity + '"]')
+                .classed('selected',true);
+        } else {
+            d3.select('svg > .showCities > image.selected')
+                .classed('selected',false);
+        }
+        
+    });
+    
     var lastCheckinTime = null;
     theMap.addPlugin('showCheckins', function (layer, data ) {
         
@@ -102,6 +113,9 @@ Template.map.rendered = function(){
                 return latLng[0] - 25; // 25 === 50px/2
             })
             .attr('y', function ( datum ) {
+                if(datum._id === 'J2y8dSLtPzGKJuHrr'){
+                    console.log('counting',datum);
+                }
                 var latLng = self.latLngToXY(datum.latitude, datum.longitude);
                 return latLng[1] - 25; // 25 === 50px/2
             })
@@ -129,5 +143,10 @@ Template.map.rendered = function(){
 
     this.autorun(function(){
         theMap.showCheckins(that.data.checkins.fetch());
+    });
+
+    this.autorun(function(){
+        var selectedCity = CitySelectionSession.getSelection();
+        theMap.selectCity(selectedCity);
     });
 };
