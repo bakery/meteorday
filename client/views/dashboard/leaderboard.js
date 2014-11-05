@@ -1,10 +1,12 @@
 Template.leaderboard.rendered = function(){
     
-    var cities = _.first(this.data.cities.fetch(), 20);
     var that = this;
 
     var setLeaderboard = function(){
-        var content = '';
+        
+        var cities = _.first(that.data.cities.fetch(), 20),
+            content = '';
+
         _.each(cities, function(city, i){
             content += UI.toHTMLWithData(Template.city_stat, city);
         });
@@ -21,7 +23,7 @@ Template.leaderboard.rendered = function(){
     });
 };
 
-Handlebars.registerHelper('toLowerCase', function(value) {
+UI.registerHelper('toLowerCase', function(value) {
     if (value && typeof value === 'string') {
         return value.toLowerCase();
     } else {
