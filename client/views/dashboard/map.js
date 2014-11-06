@@ -9,8 +9,8 @@ Template.map.rendered = function(){
 
     var particleDestination =
         Meteor.settings.public.map.checkinDestination;
-    var $mapContainer = this.$('#map');
     var particleUrl = "https://s3-eu-west-1.amazonaws.com/meteorday/particle.png";
+    var $mapContainer = this.$('#map');
     var that = this;
     var theMap = new Datamap({
         element: this.$('#map')[0],
@@ -44,14 +44,14 @@ Template.map.rendered = function(){
         var __pickParticleImage = function(d){
             var particles = {
                 red: {
-                    url: '/particle-red.png',
+                    url: 'https://s3-eu-west-1.amazonaws.com/meteorday/particle-red.png',
                     check: function(value){
                         return value/maxCounter < 0.3;
                     }
                 },
 
                 yellow: {
-                    url: '/particle-yellow.png',
+                    url: 'https://s3-eu-west-1.amazonaws.com/meteorday/particle-yellow.png',
                     check: function(value){
                         return (value/maxCounter >= 0.3) &&
                             (value/maxCounter < 0.6);
@@ -59,7 +59,7 @@ Template.map.rendered = function(){
                 },
 
                 white: {
-                    url: particleUrl,
+                    url: "https://s3-eu-west-1.amazonaws.com/meteorday/particle.png",
                     check: function(value){
                         return (value/maxCounter >= 0.6);
                     }
