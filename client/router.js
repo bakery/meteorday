@@ -40,9 +40,7 @@ Router.map(function () {
         this.route('checkins', { path: '/', controller: CheckinsController });
     } else {
         // temporary disable desktop landing
-        //this.route('dashboard', { path: '/', controller: DashboardController });
-        this.route('notreadyyet', { path : '/' });
-        this.route('dashboard', { path: '/dashboard', controller: DashboardController });
+        this.route('dashboard', { path: '/', controller: DashboardController });
     }
 
     
