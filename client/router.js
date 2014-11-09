@@ -31,13 +31,13 @@ var filters = Router._filters;
 
 if(Meteor.isCordova){
     Router.onBeforeAction(filters.isOnline);
-    Router.onBeforeAction(filters.isLoggedIn, { only: ['checkins'] });
+    //Router.onBeforeAction(filters.isLoggedIn, { only: ['checkins'] });
 }
 
 Router.map(function () {
-    
+
     if(Meteor.isCordova){
-        this.route('checkins', { path: '/', controller: CheckinsController });
+        this.route('done', { path: '/' });
     } else {
         // temporary disable desktop landing
         this.route('dashboard', { path: '/', controller: DashboardController });
