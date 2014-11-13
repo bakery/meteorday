@@ -29,7 +29,7 @@ Template.map.rendered = function(){
     theMap.addPlugin('showCities', function (layer, data ) {
 
         var maxCounter = _.max(data, function(d){ return d.counter; }).counter;
-        var scales = d3.scale.linear().domain([0,maxCounter]).range([1,10]);
+        var scales = d3.scale.linear().domain([0,1,maxCounter]).range([0,2,10]);
         var calculateSize = function(value,scales){
             var baseSize = 10;
             var scaling = Math.floor(scales(value));
@@ -75,13 +75,13 @@ Template.map.rendered = function(){
 
 
         // inserts
-        cities.enter().append('image').attr('xlink:href',__pickParticleImage)
+        cities.enter().append('image')
             .attr('data-id', function(d){ return d._id; })
             .attr('class', className).append("svg:title")
                 .text(function(d, i) { return d.name + '-' + d.country; });
 
         // updates        
-        cities
+        cities.attr('xlink:href',__pickParticleImage)
             .attr('width', function(d){
                 var size = calculateSize(d.counter,scales);
                 return size + 'px';
@@ -125,7 +125,10 @@ Template.map.rendered = function(){
         }
 
         if(data.length !== 0){
-            lastCheckinTime = data[0].created;
+            var latestCheckin = _.max(data, function(d){
+                return moment(d.created).valueOf();
+            });
+            lastCheckinTime = latestCheckin.created;
         }
 
         // hold this in a closure
@@ -169,12 +172,15 @@ Template.map.rendered = function(){
             });
     });
 
+    
     this.autorun(function(){
-        theMap.showCities(that.data.cities.fetch());
+        theMap.showCities(that.data.cities.fetch ?
+            that.data.cities.fetch() : that.data.cities.get());
     });
-
+    
     this.autorun(function(){
-        theMap.showCheckins(that.data.checkins.fetch());
+        theMap.showCheckins(that.data.checkins.fetch ?
+            that.data.checkins.fetch() : that.data.checkins.get());
     });
 
     this.autorun(function(){

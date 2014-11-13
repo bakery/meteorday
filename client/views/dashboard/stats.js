@@ -1,10 +1,22 @@
 Template.stats.helpers({
 
     getCityNumber : function() {
-        return this.cities.fetch().length;
+        var cities = this.cities.fetch ? this.cities.fetch() :
+            this.cities.get();
+        return _.filter(cities, function(c){ return c.counter !== 0; }).length;
+    },
+
+    cityLabel : function(value){
+        return value === 1 ? 'CITY' : 'CITIES';
+    },
+
+    checkinLabel : function(value){
+        return value === 1 ? 'CHECKIN' : 'CHECKINS';
     },
 
     getCheckinNumber : function() {
-        return _.reduce(this.cities.fetch(), function(memo, city){ return memo + city.counter; }, 0);
+        var checkins = this.cities.fetch ? this.cities.fetch() :
+            this.cities.get();
+        return _.reduce(checkins, function(memo, city){ return memo + city.counter; }, 0);
     }
 });

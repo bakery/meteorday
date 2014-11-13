@@ -23,6 +23,15 @@ Template.leaderboard.rendered = function(){
     });
 };
 
+Template.city_stat.helpers({
+    cityUrlContext : function(){
+        return {
+            city : this.slug,
+            id : this._id
+        };
+    }
+});
+
 UI.registerHelper('toLowerCase', function(value) {
     if (value && typeof value === 'string') {
         return value.toLowerCase();

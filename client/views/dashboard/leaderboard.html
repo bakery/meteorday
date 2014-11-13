@@ -6,7 +6,7 @@
 
 <template name="city_stat">
     <span class="city-stat">
-        {{name}} <span class="flag-icon flag-icon-{{toLowerCase countryShortName}}"></span>
+        <a target="_blank" href="{{pathFor route='checkinsByCity' data=cityUrlContext}}">{{name}}</a> <span class="flag-icon flag-icon-{{toLowerCase countryShortName}}"></span>
         {{counter}} <span class="meteor-icon"></span>
     </span>
 </template>
