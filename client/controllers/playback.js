@@ -7,7 +7,7 @@ PlaybackController = DesktopController.extend({
 
     waitOn: function () {
         return [
-            Meteor.subscribe('checkins',430),
+            Meteor.subscribe('playback-checkins',430),
             Meteor.subscribe('city-stats')
         ];
     },
@@ -26,11 +26,7 @@ PlaybackController = DesktopController.extend({
 
         if(this.ready()){
 
-            var realCheckins = _.filter(Checkins.find({
-                created : {
-                    $lte : moment(new Date(2014,11,7,7)).utc().toDate()
-                }
-            },{ sort : {
+            var realCheckins = _.filter(Checkins.find({},{ sort : {
                 created : 1
             }}).fetch(), function(c){ return c.geography; });
 

@@ -15,6 +15,15 @@ Meteor.publish('checkins', function(limit){
     return getAllCheckins(limit);
 });
 
+Meteor.publish('playback-checkins', function(limit){
+    return Checkins.find({ geography : { $exists : true }},{
+        sort : {
+            created : 1
+        },
+        limit : limit
+    });
+});
+
 Meteor.publish('checkinsByCity', function(cityId){
     return Checkins.find({ 'geography.cityId' : cityId });
 });
