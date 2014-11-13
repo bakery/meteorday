@@ -1,0 +1,11 @@
+<template name="checkinsByCity">
+	<div class="checkin-content content">
+    	<div class="card items">
+			<ul class="table-view">
+			{{#each checkins}}
+				{{> item }}
+			{{/each}}
+			</ul>
+		</div>
+    </div>
+</template>

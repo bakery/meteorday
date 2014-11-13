@@ -15,10 +15,18 @@ Meteor.publish('checkins', function(limit){
     return getAllCheckins(limit);
 });
 
+Meteor.publish('checkinsByCity', function(cityId){
+    return Checkins.find({ 'geography.cityId' : cityId });
+});
+
 Meteor.publish('city-stats', function(){
     return CityStats.find();
 });
 
 Meteor.publish('country-stats', function(){
     return CountryStats.find();
+});
+
+Meteor.publish('all-users', function(){
+    return Meteor.users.find();
 });
