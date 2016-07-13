@@ -1,4 +1,4 @@
-Based on [Waldo](http://thebakery.io/waldo)
+![Meteor Day Checkin](.github/mdc-screen.png)
 
 ## settings
 
